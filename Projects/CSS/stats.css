@@ -1,0 +1,45 @@
+.clubs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.clubs .btn-group label{
+    font-size: 0.8rem;
+}
+
+
+.clubs__table-overall th{
+    padding: 0.7rem;
+    color: #2e093d;
+    text-align: center;
+}
+
+.clubs__table-overall tr{
+    text-align: center;
+    
+}
+
+.clubs__table-overall td .wins{
+    background-color: lime;
+    padding: 0.4rem;
+}
+
+.clubs__table-overall td .draws{
+    background-color: yellow;
+    padding: 0.4rem;
+}
+
+.clubs__table-overall td .losses{
+    background-color: rgb(212, 50, 50);
+    padding: 0.4rem;
+}
+
+.clubs__table-overall-FORM{
+    margin-top: 0.2rem;
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}

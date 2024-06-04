@@ -1,0 +1,38 @@
+.navigation{
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.navigation ul{
+    list-style-type: none;
+    display: flex;
+    font-size: 1rem;
+    gap: 3rem;
+    font-weight: 600;
+}
+
+.navigation ul li{
+    padding: 1.2rem;
+    border-radius: 30%;
+    color: #2e093d;
+    transition: background 1s ease-in-out;
+    border: none;
+    outline: none;
+ }
+
+.navigation ul li:hover{
+   background-color:#2e093d;
+   color: white;
+   cursor: pointer;
+   box-shadow: 5px 6px 17px #2e093d;
+}
+
+a{
+    text-decoration: none;
+}
+
+footer{
+    background-color: #2e093d;
+    text-align: center;
+    color: white;
+}

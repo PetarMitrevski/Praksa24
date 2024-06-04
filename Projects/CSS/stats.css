@@ -1,42 +1,39 @@
-.clubs{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.navigation{
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.clubs__table-overall th{
-    padding: 0.7rem;
+.navigation ul{
+    list-style-type: none;
+    display: flex;
+    font-size: 1rem;
+    gap: 3rem;
+    font-weight: 600;
+}
+
+.navigation ul li{
+    padding: 1.2rem;
+    border-radius: 30%;
     color: #2e093d;
+    transition: background 1s ease-in-out;
+    border: none;
+    outline: none;
+ }
+
+.navigation ul li:hover{
+   background-color:#2e093d;
+   color: white;
+   cursor: pointer;
+   box-shadow: 5px 6px 17px #2e093d;
+}
+
+a{
+    text-decoration: none;
+}
+
+footer{
+    background-color: #2e093d;
     text-align: center;
-}
-
-.clubs__table-overall tr{
-    text-align: center;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-    
-}
-
-.clubs__table-overall td .wins{
-    background-color: lime;
-    padding: 0.4rem;
-}
-
-.clubs__table-overall td .draws{
-    background-color: yellow;
-    padding: 0.4rem;
-}
-
-.clubs__table-overall td .losses{
-    background-color: rgb(212, 50, 50);
-    padding: 0.4rem;
-}
-
-.clubs__table-overall-FORM{
-    margin-top: 0.2rem;
-    display: flex;
-    gap: 0.3rem;
-    flex-wrap: wrap;
+    color: white;
+    font-weight: 700;
 }

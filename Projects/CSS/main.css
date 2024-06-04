@@ -14,3 +14,79 @@ body{
     justify-content: space-evenly;
     gap: 5rem;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    footer {
+        background-color: #2e093d;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        top: 17rem;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 3rem;
+        padding-top: 1rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    
+    body {
+        padding: 0;
+    }
+
+    .clubs{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+
+    .clubs__table-overall th{
+        padding: 0.3rem;
+        color: #2e093d;
+        text-align: center;
+        font-size: 0.5rem;
+    }
+
+    .clubs__table-overall tr{
+        font-size: 0.6rem;
+    }
+
+    .clubs__table-overall td .wins{
+        background-color: lime;
+        padding: 0.4rem;
+    }
+    
+    .clubs__table-overall td .draws{
+        background-color: yellow;
+        padding: 0.4rem;
+    }
+
+    .clubs__table-overall td .losses{
+        background-color: rgb(212, 50, 50);
+        padding: 0.4rem;
+    }
+
+    .clubs__table-overall-FORM{
+        margin-top: 0.4rem;
+        display: flex;
+        gap: 0.3rem;
+        flex-wrap: wrap;
+        font-size:0.8rem;
+    }
+
+    .navigation ul{
+        list-style-type: none;
+        font-size: 0.8rem;
+        gap: 2rem;
+        font-weight: 600;
+    }
+
+    footer{
+        font-size: 0.8rem;
+    }
+}

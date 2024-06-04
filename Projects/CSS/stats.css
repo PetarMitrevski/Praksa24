@@ -6,11 +6,6 @@
     flex-wrap: wrap;
 }
 
-.clubs .btn-group label{
-    font-size: 0.8rem;
-}
-
-
 .clubs__table-overall th{
     padding: 0.7rem;
     color: #2e093d;

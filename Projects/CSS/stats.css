@@ -1,0 +1,25 @@
+.clubs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+.clubs__table-overall th{
+    padding: 0.6rem;
+    color: #2e093d;
+    text-align: center;
+}
+
+.clubs__table-overall tr{
+    text-align: center;
+    border-bottom: 0.75px solid black;
+    border-top: 0.75px solid black;
+    font-weight: 500;
+}
+
+.clubs__table-overall tr img{
+    width: 1.6rem;
+    margin: 0.4rem;
+}
+

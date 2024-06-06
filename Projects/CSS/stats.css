@@ -1,0 +1,26 @@
+.clubs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+
+.clubs__table-overall th, .clubs__table-scorers th{
+    padding: 0.6rem;
+    color: #2e093d;
+    text-align: center;
+}
+
+.clubs__table-overall tr, .clubs__table-scorers tr{
+    text-align: center;
+    border-bottom: 0.75px solid black;
+    border-top: 0.75px solid black;
+    font-weight: 500;
+}
+
+.clubs__table-overall tr img, .clubs__table-scorers tr img{
+    width: 1.6rem;
+    margin: 0.4rem;
+}
+

@@ -1,0 +1,45 @@
+.clubs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.clubs .btn-group button{
+    border: 2px solid #2e093d;
+}
+
+.clubs .btn-group button:hover{
+    background-color: #2e093d;
+    color: white;
+}
+
+
+.clubs__table-overall th, .clubs__table-scorers th, .clubs__table-home th, .clubs__table-away th{
+    padding: 0.6rem;
+    color: #2e093d;
+    text-align: center;
+}
+
+.clubs__table-overall tr, .clubs__table-scorers tr, .clubs__table-home tr, .clubs__table-away tr{
+    text-align: center;
+    border-bottom: 0.75px solid black;
+    border-top: 0.75px solid black;
+    font-weight: 500;
+}
+
+.clubs__table-overall tr img, .clubs__table-scorers tr img, .clubs__table-home img, .clubs__table-away img{
+    width: 0.9rem;
+    margin: 0.4rem;
+}
+
+
+.dissappear{
+    display: none;
+}
+
+.appear{
+    display: block;
+}

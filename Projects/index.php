@@ -45,7 +45,7 @@ if($conn->connect_error){
     on matches.HomeTeamID = team1.teamID
     INNER join teams team2
     on matches.AwayTeamID = team2.teamID
-    WHERE week = 1";
+    WHERE week = 1;";
   
   $result = $conn->query($query);
 
@@ -58,14 +58,14 @@ if($conn->connect_error){
 
      if($match['HomeScore'] > $match['AwayScore']){
         
-       $order = "UPDATE teams
+      /* $order = "UPDATE teams
        SET Wins = Wins + 1, Draws = Draws + 0, Losses = Losses + 0,Points = Points + Wins * 3 + Draws
-       WHERE team_home = Chelsea
+       WHERE team_home = 
        ORDER BY Points";
   
 
       $result = $conn->query($order);
-
+       */
       
 
 
@@ -153,10 +153,6 @@ if($conn->connect_error){
              ";
              $number++;
           }
-
-          
-
-
         ?>
         </table>
         </section>

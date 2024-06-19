@@ -36,7 +36,7 @@ if($conn->connect_error){
 }
 
   
-  
+ 
   $query = "SELECT * ,
     team1.TeamName as team_home,
     team2.TeamName as team_away
@@ -60,11 +60,13 @@ if($conn->connect_error){
         
        $order = "UPDATE teams
        SET Wins = Wins + 1, Draws = Draws + 0, Losses = Losses + 0,Points = Points + Wins * 3 + Draws
-       WHERE team_home = $match[team_home]
-       ORDER BY Points
-       ";
+       WHERE team_home = Chelsea
+       ORDER BY Points";
+  
 
-   $result = $conn->query($query);
+      $result = $conn->query($order);
+
+      
 
 
      }
@@ -72,7 +74,6 @@ if($conn->connect_error){
 
 
    }
-
 
    ?>
 

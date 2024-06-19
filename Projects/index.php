@@ -55,23 +55,18 @@ if($conn->connect_error){
      echo "
      <h5>$match[matchDate] $match[matchTime] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5> ";
 
-
-     if($match['HomeScore'] > $match['AwayScore']){
-        
-      /* $order = "UPDATE teams
-       SET Wins = Wins + 1, Draws = Draws + 0, Losses = Losses + 0,Points = Points + Wins * 3 + Draws
-       WHERE team_home = 
-       ORDER BY Points";
-  
-
-      $result = $conn->query($order);
-       */
-      
-
-
-     }
      
-
+     if(($match['HomeScore'] > $match['AwayScore'])){
+      
+      $order ="
+      
+      UPDATE teams
+      SET Points = Points + 3,Wins = Wins + 1
+      WHERE TeamName = '$match[team_home]';
+      ";
+      
+      $conn->query($order);
+     }
 
    }
 
@@ -93,13 +88,9 @@ if($conn->connect_error){
            $database = "premier league";
 
 
-           $conn = new mysqli($servername, $username, $password, $database);
+           
 
-           if($conn->connect_error){
-            die("Connection failed" . $conn->connect_error);
-           }
-
-          
+        
 
 
           $sql = "SELECT * FROM teams";

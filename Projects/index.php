@@ -59,7 +59,6 @@ if($conn->connect_error){
      if(($match['HomeScore'] > $match['AwayScore'])){
       
       $order ="
-      
       UPDATE teams
       SET Points = Points + 3,Wins = Wins + 1
       WHERE TeamName = '$match[team_home]';

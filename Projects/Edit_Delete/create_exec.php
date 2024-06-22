@@ -19,9 +19,9 @@ if($conn->connect_error){
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $team = $_POST["Team"];
-    $wins = $_POST["Wins"];
-    $draws = $_POST["Draws"];
-    $losses = $_POST["Losses"];
+    $wins = htmlspecialchars($_POST["Wins"]);
+    $draws = htmlspecialchars($_POST["Draws"]);
+    $losses = htmlspecialchars($_POST["Losses"]);
     
     $points = $wins * 3 + $draws;
     
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     VALUE ('$team', $points, $wins, $draws, $losses);";
    
     
-   if ($conn->query($sql) === TRUE) {
+   if ($conn->query($sql)) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 $conn->close();
     
-    
+exit;
 
     
 }

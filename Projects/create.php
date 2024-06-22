@@ -10,9 +10,13 @@
 </head>
 <body>
 
+<?php
+include 'views/navigation.html';
+?>
 
 
-<form action="create_exec.php"  method="post">
+
+<form action="Edit_Delete/create_exec.php"  method="post">
             <fieldset>
              
             <div>
@@ -38,6 +42,8 @@
                 <option value="Wolverhampton">Wolverhampton</option>
                 <option value="Ipswich Town">Ipswich Town</option>
                 <option value="Sheffield">Sheffield</option>
+
+
                 
              </select>
              </div>

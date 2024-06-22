@@ -138,6 +138,14 @@ if($conn->connect_error){
            <td>
             $row[Points]
            </td>
+
+           <td>
+           <button><a href="">Edit</a></button>
+           </td>
+
+           <td>
+           <button>Delete</button>
+           </td>
            
         </tr>
              ";

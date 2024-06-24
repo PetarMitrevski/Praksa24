@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +62,7 @@ if($conn->connect_error){
      
      if(($match['HomeScore'] > $match['AwayScore'])){
       
-      $order ="
+        $order ="
       UPDATE teams
       SET Points = Points + 3,Wins = Wins + 1
       WHERE TeamName = '$match[team_home]';
@@ -76,6 +80,7 @@ if($conn->connect_error){
 </section>
 
 <section class="clubs">
+  
 <table id="table_overall" class="clubs__table-overall">
        
         <?php
@@ -155,7 +160,10 @@ if($conn->connect_error){
         </table>
         </section>
         
-        <footer></fotter>
+        <footer>
+        <p>&copy; 2024 Example Company.<br> All rights reserved.</p>
+        </footer>
+
         </body>
         </html>
 

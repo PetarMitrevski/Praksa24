@@ -21,31 +21,7 @@ include 'views/navigation.html';
              
             <div>
              <label>Team:</label>
-             <select name="Team">
-                <option value="Manchester City">Manchester City</option>
-                <option value="Arsenal">Arsenal</option>
-                <option value="Liverpool">Liverpool</option>
-                <option value="Manchester United">Manchester United</option>
-                <option value="Chelsea">Chelsea</option>
-                <option value="Newcastle">Newcastle</option>
-                <option value="Aston Villa">Aston Villa</option>
-                <option value="Bournemouth">Bournemouth</option>
-                <option value="Brentford">Brentford</option>
-                <option value="Brighton">Brighton</option>
-                <option value="Everton">Everton</option>
-                <option value="Fulham">Fulham</option>
-                <option value="Leicester City">Leicester City</option>
-                <option value="Nottingham Forest">Nottingham Forest</option>
-                <option value="Southampton">Southampton</option>
-                <option value="Tottenham">Tottenham</option>
-                <option value="West Ham">West Ham</option>
-                <option value="Wolverhampton">Wolverhampton</option>
-                <option value="Ipswich Town">Ipswich Town</option>
-                <option value="Sheffield">Sheffield</option>
-
-
-                
-             </select>
+             <input name="Team" type="text"/>
              </div>
 
              <div>

@@ -11,7 +11,7 @@
 <body>
 
 <?php
-include 'views/navigation.html';
+include 'views/navigation.php';
 
 $servername = "localhost";
 $username = "root";

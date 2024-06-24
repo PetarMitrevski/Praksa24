@@ -36,11 +36,11 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
 else{
       
-    $id = $_POST['id'];
-    $team = $_POST["Team"];
-    $wins = $_POST["Wins"] ;
-    $draws = $_POST["Draws"];
-    $losses = $_POST["Losses"];
+    $id = htmlspecialchars($_POST['id']);
+    $team = htmlspecialchars($_POST["Team"]);
+    $wins = htmlspecialchars($_POST["Wins"]);
+    $draws = htmlspecialchars($_POST["Draws"]);
+    $losses = htmlspecialchars($_POST["Losses"]);
 
     $sql = "UPDATE teams 
     SET TeamName = '$team', Wins = '$wins', Draws = '$draws', Losses = '$losses', Points = Wins * 3 + Draws

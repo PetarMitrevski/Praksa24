@@ -18,7 +18,7 @@ if($conn->connect_error){
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    $team = $_POST["Team"];
+    $team = htmlspecialchars($_POST["Team"]);
     $wins = htmlspecialchars($_POST["Wins"]);
     $draws = htmlspecialchars($_POST["Draws"]);
     $losses = htmlspecialchars($_POST["Losses"]);

@@ -13,6 +13,10 @@
 <?php
 include 'views/navigation.html';
 $id = $_GET["id"]; 
+
+$sql = "SELECT * FROM teams WHERE teamID = '$id'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 ?>
 
 
@@ -21,46 +25,26 @@ $id = $_GET["id"];
             <fieldset>
              
             <div>
-              <input name="id" type="hidden" value="<?php echo $id; ?>">
+              <input name="id" type="hidden" placeholder="Team" value="<?php echo $id; ?>">
+             <div>
              <label>Team:</label>
-             <select name="Team">
-                <option value="Manchester City">Manchester City</option>
-                <option value="Arsenal">Arsenal</option>
-                <option value="Liverpool">Liverpool</option>
-                <option value="Manchester United">Manchester United</option>
-                <option value="Chelsea">Chelsea</option>
-                <option value="Newcastle">Newcastle</option>
-                <option value="Aston Villa">Aston Villa</option>
-                <option value="Bournemouth">Bournemouth</option>
-                <option value="Brentford">Brentford</option>
-                <option value="Brighton">Brighton</option>
-                <option value="Everton">Everton</option>
-                <option value="Fulham">Fulham</option>
-                <option value="Leicester City">Leicester City</option>
-                <option value="Nottingham Forest">Nottingham Forest</option>
-                <option value="Southampton">Southampton</option>
-                <option value="Tottenham">Tottenham</option>
-                <option value="West Ham">West Ham</option>
-                <option value="Wolverhampton">Wolverhampton</option>
-                <option value="Ipswich Town">Ipswich Town</option>
-                <option value="Sheffield">Sheffield</option>
-                
-             </select>
+             <input required placeholder="Team" name="Team" type="text" value="<?php echo $row['TeamName']; ?>"/>
+             </div>
              </div>
 
              <div>
              <label  for="Wins">Wins</label>
-             <input required id="Wins" name="Wins" type="number" placeholder="Away"/>
+             <input required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?php echo $row['Wins']; ?>"/>
              </div>
 
              <div>
              <label>Draws</label>
-             <input required id="Draws" name="Draws" type="number" placeholder="Draws"/>
+             <input required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?php echo $row['Draws']; ?>"/>
              </div>
              
              <div>
              <label>Losses</label>
-             <input required name="Losses" id="Losses" type="number" placeholder="Losses"/>
+             <input required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?php echo $row['Losses']; ?>"/>
              </div> 
             
              

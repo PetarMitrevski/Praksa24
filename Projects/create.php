@@ -26,7 +26,7 @@ include 'views/navigation.html';
 
              <div>
              <label  for="Wins">Wins</label>
-             <input required id="Wins" name="Wins" type="number" placeholder="Away"/>
+             <input required id="Wins" name="Wins" type="number" placeholder="Wins"/>
              </div>
 
              <div>

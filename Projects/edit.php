@@ -12,8 +12,16 @@
 
 <?php
 include 'views/navigation.html';
-$id = $_GET["id"]; 
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "premier league";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+$id = $_GET["id"];
+ 
 $sql = "SELECT * FROM teams WHERE teamID = '$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();

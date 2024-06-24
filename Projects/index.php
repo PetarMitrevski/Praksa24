@@ -110,7 +110,6 @@ if($conn->connect_error){
              <tr>
             <th>#</th>
             <th>TEAM</th>
-            <th>MATCHES PLAYED</th>
             <th>WINS</th>
             <th>DRAWS</th>
             <th>LOSES</th>
@@ -127,9 +126,6 @@ if($conn->connect_error){
            </td>
            <td>
              $row[TeamName]
-           </td>
-           <td>
-            
            </td>
            <td>
             $row[Wins]

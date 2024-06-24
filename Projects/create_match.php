@@ -44,12 +44,12 @@ include 'views/navigation.php';
             
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $team_id = $row["teamID"];
-                    $team_name = $row["TeamName"];
-                    echo "<option value='$team_id'>$team_name</option>";
+                    $teamID = $row["teamID"];
+                    $TeamName = $row["TeamName"];
+                    echo "<option value=\"$teamID\">$TeamName</option>";
                 }
             } else {
-                echo "<option value=''>No teams found</option>";
+                echo "<option value=\"\">No teams found</option>";
             }
 
           
@@ -79,12 +79,12 @@ include 'views/navigation.php';
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    $team_id = $row["teamID"];
-                    $team_name = $row["TeamName"];
-                    echo "<option value='$team_id'>$team_name</option>";
+                    $teamID = $row["teamID"];
+                    $TeamName = $row["TeamName"];
+                    echo "<option value=\"$teamID\">$TeamName</option>";
                 }
             } else {
-                echo "<option value=''>No teams found</option>";
+                echo "<option value=\"\">No teams found</option>";
             }
 
             $conn->close();

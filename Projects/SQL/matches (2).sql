@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 03:40 PM
+-- Generation Time: Jun 25, 2024 at 09:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,8 +44,8 @@ CREATE TABLE `matches` (
 
 INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate`, `matchTime`, `HomeScore`, `AwayScore`) VALUES
 (1, 1, 2, 1, '2024-06-05', '14:00:00', 0, 2),
-(2, 4, 6, 1, '2024-06-06', '15:00:00', 1, 2),
-(3, 3, 7, 1, '2024-06-06', '18:00:00', 1, 0);
+(10, 9, 20, 1, '2024-06-28', '15:00:00', 1, 1),
+(11, 9, 20, 1, '2024-06-28', '15:00:00', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -56,8 +56,8 @@ INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate
 --
 ALTER TABLE `matches`
   ADD PRIMARY KEY (`matchID`),
-  ADD KEY `HomeTeamID` (`HomeTeamID`),
-  ADD KEY `AwayTeamID` (`AwayTeamID`);
+  ADD KEY `fk_HomeTeamID` (`HomeTeamID`),
+  ADD KEY `fk_AwayTeamID` (`AwayTeamID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -67,7 +67,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -77,6 +77,8 @@ ALTER TABLE `matches`
 -- Constraints for table `matches`
 --
 ALTER TABLE `matches`
+  ADD CONSTRAINT `fk_AwayTeamID` FOREIGN KEY (`AwayTeamID`) REFERENCES `teams` (`teamID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_HomeTeamID` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`) ON DELETE CASCADE,
   ADD CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`),
   ADD CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`AwayTeamID`) REFERENCES `teams` (`teamID`);
 COMMIT;

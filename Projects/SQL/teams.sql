@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2024 at 11:31 AM
+-- Generation Time: Jun 25, 2024 at 09:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,21 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matches`
---
-
-CREATE TABLE `matches` (
-  `matchID` int(11) NOT NULL,
-  `HomeTeamID` int(11) NOT NULL,
-  `AwayTeamID` int(11) NOT NULL,
-  `week` int(11) NOT NULL,
-  `matchDate` date NOT NULL,
-  `matchTime` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `teams`
 --
 
@@ -52,49 +37,51 @@ CREATE TABLE `teams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `teams`
 --
 
+INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`) VALUES
+(1, 'Manchester City', 0, 0, 0, 0),
+(2, 'Arsenal', 0, 0, 0, 0),
+(5, 'Chelsea', 0, 0, 0, 0),
+(6, 'Newcastle', 0, 0, 0, 0),
+(7, 'Aston Villa', 0, 0, 0, 0),
+(8, 'Bournemouth', 0, 0, 0, 0),
+(9, 'Brentford', 0, 0, 0, 0),
+(10, 'Brighton', 0, 0, 0, 0),
+(11, 'Everton', 0, 0, 0, 0),
+(12, 'Fulham', 0, 0, 0, 0),
+(13, 'Leicester City', 0, 0, 0, 0),
+(14, 'Nottingham Forest', 0, 0, 0, 0),
+(15, 'Southampton', 0, 0, 0, 0),
+(16, 'Tottenham', 0, 0, 0, 0),
+(17, 'West Ham', 0, 0, 0, 0),
+(18, 'Wolverhampton', 0, 0, 0, 0),
+(19, 'Ipswich Town', 0, 0, 0, 0),
+(20, 'Sheffield', 0, 0, 0, 0),
+(24, 'Manchester United', 0, 0, 0, 0),
+(27, 'Liverpool', 0, 0, 0, 0);
+
 --
--- Indexes for table `matches`
+-- Indexes for dumped tables
 --
-ALTER TABLE `matches`
-  ADD PRIMARY KEY (`matchID`),
-  ADD KEY `HomeTeamID` (`HomeTeamID`),
-  ADD KEY `AwayTeamID` (`AwayTeamID`);
 
 --
 -- Indexes for table `teams`
 --
 ALTER TABLE `teams`
-  ADD PRIMARY KEY (`teamID`);
+  ADD PRIMARY KEY (`teamID`),
+  ADD UNIQUE KEY `Team` (`TeamName`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `matches`
---
-ALTER TABLE `matches`
-  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `matches`
---
-ALTER TABLE `matches`
-  ADD CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`),
-  ADD CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`AwayTeamID`) REFERENCES `teams` (`teamID`);
+  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

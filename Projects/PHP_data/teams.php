@@ -6,7 +6,7 @@ $password = "";
 $database = "premier league";
 
 
-$sql = "SELECT * FROM teams";
+$sql = "SELECT * FROM teams ORDER BY Points DESC";
 $result = $conn->query($sql);
 $number = 1;
 

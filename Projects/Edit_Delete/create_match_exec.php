@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
  
+
  $query = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
  VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore);";
 

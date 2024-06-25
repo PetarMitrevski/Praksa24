@@ -1,3 +1,5 @@
+<section class="matches">
+
 <?php
 
 $servername = "localhost";
@@ -15,9 +17,16 @@ if($conn->connect_error){
  $sql = "SELECT MAX(week) AS weeks
  FROM matches";
  
-  echo $sql['weeks'];
-  
-  $query = "SELECT * ,
+ $row = $conn->query($sql);
+
+ $maxWeek = $row->fetch_assoc();
+ $i = 1;
+
+
+
+ while($maxWeek['weeks']>= $i){
+
+    $query = "SELECT * ,
     team1.TeamName as team_home,
     team2.TeamName as team_away
     FROM matches
@@ -25,14 +34,26 @@ if($conn->connect_error){
     on matches.HomeTeamID = team1.teamID
     INNER join teams team2
     on matches.AwayTeamID = team2.teamID
-    WHERE week = 1;";
+    WHERE week = $i;";
   
   $result = $conn->query($query);
-
-  
+ 
+  echo "
+ <article>
+ <h4>Week $i</h4>
+  ";
    while($match = $result->fetch_assoc()){
          
      echo "
      <h5>$match[matchDate] $match[matchTime] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5> ";
 
    }
+
+  echo "</article>";
+  $i++;
+ }
+
+  
+?>
+
+</section>

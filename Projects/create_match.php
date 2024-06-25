@@ -15,8 +15,8 @@ include 'views/navigation.php';
              </div>
 
              <div>
-             <label>Home Team:</label><br>
-        <select name="Home" required>
+             <label>Home Team:</label>
+            <select name="Home" required>
             <?php
             
             $servername = "localhost";
@@ -58,7 +58,7 @@ include 'views/navigation.php';
              </div>
 
              <div>
-             <label>Away:</label>
+             <label>Away Team:</label>
         <select name="Away" required>
             <?php
             

@@ -26,14 +26,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
  
-
+ if(!($home === $away)){
  $query = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
  VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore);";
+ 
+ $conn->query($query);
+ echo "Match added sucessfully";
 
-if($conn->query($query)){
-    $conn->query($query);
-    echo "Match added sucessfully";
-}
+ }
+
+else
+echo "Cannot add match";
+
 
 
 $conn->close();

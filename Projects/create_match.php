@@ -54,7 +54,9 @@ include 'views/navigation.php';
 
           
             $conn->close();
+            
             ?>
+            </select>
              </div>
 
              <div>
@@ -89,6 +91,7 @@ include 'views/navigation.php';
 
             $conn->close();
             ?>
+            </select>
              </div>
              
              <div>

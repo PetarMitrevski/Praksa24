@@ -5,6 +5,8 @@ $username = "root";
 $password = "";
 $database = "premier league";
 
+$conn = new mysqli($servername, $username, $password, $database);
+
 
 $sql = "SELECT * FROM teams ORDER BY Points DESC";
 $result = $conn->query($sql);

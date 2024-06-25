@@ -15,7 +15,7 @@ include 'views/navigation.php';
              </div>
 
              <div>
-             <label >Home Team:</label><br>
+             <label>Home Team:</label><br>
         <select name="Home" required>
             <?php
             
@@ -33,7 +33,7 @@ include 'views/navigation.php';
             }
 
            
-            $sql = "SELECT team_name FROM teams";
+            $sql = "SELECT * FROM teams";
             $result = $conn->query($sql);
 
             
@@ -46,11 +46,9 @@ include 'views/navigation.php';
                 while($row = $result->fetch_assoc()) {
                     $teamID = $row["teamID"];
                     $TeamName = $row["TeamName"];
-                    echo "<option value=\"$teamID\">$TeamName</option>";
+                    echo "<option value='$teamID'>$TeamName</option>";
                 }
-            } else {
-                echo "<option value=\"\">No teams found</option>";
-            }
+            } 
 
           
             $conn->close();
@@ -83,10 +81,8 @@ include 'views/navigation.php';
                 while($row = $result->fetch_assoc()) {
                     $teamID = $row["teamID"];
                     $TeamName = $row["TeamName"];
-                    echo "<option value=\"$teamID\">$TeamName</option>";
+                    echo "<option value='$teamID'>$TeamName</option>";
                 }
-            } else {
-                echo "<option value=\"\">No teams found</option>";
             }
 
             $conn->close();

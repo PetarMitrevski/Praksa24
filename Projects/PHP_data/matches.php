@@ -2,7 +2,18 @@
 
 <?php
 
-require_once "PHP_data/config.php";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "premier league";
+//insert into...
+
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if($conn->connect_error){
+ die("Connection failed" . $conn->connect_error);
+}
 
  $sql = "SELECT MAX(week) AS weeks
  FROM matches";
@@ -18,7 +29,8 @@ require_once "PHP_data/config.php";
 
     $query = "SELECT * ,
     team1.TeamName as team_home,
-    team2.TeamName as team_away
+    team2.TeamName as team_away,
+    SUBSTRING(matchTime, 1, 5) AS matchStart
     FROM matches
     INNER join teams team1
     on matches.HomeTeamID = team1.teamID
@@ -37,8 +49,8 @@ require_once "PHP_data/config.php";
      echo "
      
      <div style='display:flex; column-gap:1rem; margin:0.5rem;'>
-     <h5>$match[matchDate] $match[matchTime] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5>
-     <button><a href='Edit_Delete/edit_match_exec.php?id=$match[matchID]'>Edit</a></button>
+     <h5>$match[matchDate] | $match[matchStart] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5>
+     <button><a href='edit_match.php?id=$match[matchID]'>Edit</a></button>
      <button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> 
      </div>
 

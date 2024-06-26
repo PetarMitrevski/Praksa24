@@ -17,6 +17,7 @@ if($conn->connect_error){
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+
  $week = htmlspecialchars($_POST['Week']);
  $home = htmlspecialchars($_POST['Home']);
  $away = htmlspecialchars($_POST['Away']);
@@ -25,12 +26,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchDate = htmlspecialchars($_POST['Match_date']);
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
+
  
  if(!($home === $away)){
- $query = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
+ $statement = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
  VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore);";
  
- $conn->query($query);
+ $conn->query($statement);
  echo "Match added sucessfully";
 
  }

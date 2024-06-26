@@ -24,13 +24,12 @@ include 'views/navigation.php';
             $password = "";
             $database = "premier league";
 
-          
-            $conn = new mysqli($servername, $username, $password, $database);
 
-           
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+             $conn = new mysqli($servername, $username, $password, $database);
+
+            if($conn->connect_error){
+            die("Connection failed" . $conn->connect_error);
+            } 
 
            
             $sql = "SELECT * FROM teams";
@@ -51,7 +50,6 @@ include 'views/navigation.php';
             } 
 
           
-            $conn->close();
             
             ?>
             </select>
@@ -62,7 +60,6 @@ include 'views/navigation.php';
         <select name="Away" required>
             <?php
             
-            $conn = new mysqli($servername, $username, $password, $database);
 
             // Check connection
             if ($conn->connect_error) {

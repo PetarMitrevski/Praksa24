@@ -20,6 +20,7 @@ require_once 'views/navigation.php';
         <?php
         include "PHP_data/matches.php";
  
+        
         ?>
         
         <footer>

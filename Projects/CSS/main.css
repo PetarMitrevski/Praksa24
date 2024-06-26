@@ -15,6 +15,10 @@
     align-items: center;
     justify-content: center;
 }
+
+.matches__records{
+    display: flex;
+}
 body{
     display: flex;
     flex-direction: column;

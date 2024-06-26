@@ -11,14 +11,20 @@
 <body>
 
 <?php
-include 'views/navigation.php';
+require_once 'views/navigation.php';
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "premier league";
+//insert into...
+
 
 $conn = new mysqli($servername, $username, $password, $database);
+
+if($conn->connect_error){
+ die("Connection failed" . $conn->connect_error);
+}
 
 $id = $_GET["id"];
  
@@ -33,26 +39,26 @@ $row = $result->fetch_assoc();
             <fieldset>
              
             <div>
-              <input name="id" type="hidden" placeholder="Team" value="<?php echo $id; ?>">
+              <input name="id" type="hidden" placeholder="Team" value="<?= $id; ?>">
              <div>
              <label>Team:</label>
-             <input required placeholder="Team" name="Team" type="text" value="<?php echo $row['TeamName']; ?>"/>
+             <input required placeholder="Team" name="Team" type="text" value="<?= $row['TeamName']; ?>"/>
              </div>
              </div>
 
              <div>
              <label  for="Wins">Wins</label>
-             <input required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?php echo $row['Wins']; ?>"/>
+             <input required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?= $row['Wins']; ?>"/>
              </div>
 
              <div>
              <label>Draws</label>
-             <input required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?php echo $row['Draws']; ?>"/>
+             <input required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?= $row['Draws']; ?>"/>
              </div>
              
              <div>
              <label>Losses</label>
-             <input required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?php echo $row['Losses']; ?>"/>
+             <input required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?= $row['Losses']; ?>"/>
              </div> 
             
              
@@ -63,6 +69,8 @@ $row = $result->fetch_assoc();
            
          </form>
          
-         
+         <footer>
+        <p>&copy; 2024 Example Company.<br> All rights reserved.</p>
+        </footer>
 </body>
 </html>

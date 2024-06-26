@@ -1,6 +1,6 @@
 <?php
 if(file_exists('views/navigation.php'))
-include 'views/navigation.php';
+require_once 'views/navigation.php';
 ?>
 
 

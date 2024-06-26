@@ -2,17 +2,7 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "premier league";
-
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if($conn->connect_error){
- die("Connection failed" . $conn->connect_error);
-}
+require_once "PHP_data/config.php";
 
  $sql = "SELECT MAX(week) AS weeks
  FROM matches";
@@ -45,8 +35,15 @@ if($conn->connect_error){
    while($match = $result->fetch_assoc()){
          
      echo "
-     <h5>$match[matchDate] $match[matchTime] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5> ";
+     
+     <div style='display:flex; column-gap:1rem; margin:0.5rem;'>
+     <h5>$match[matchDate] $match[matchTime] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5>
+     <button><a href='Edit_Delete/edit_match_exec.php?id=$match[matchID]'>Edit</a></button>
+     <button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> 
+     </div>
 
+     ";
+     
    }
 
   echo "</article>";

@@ -1,11 +1,6 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "premier league";
-
-$conn = new mysqli($servername, $username, $password, $database);
+require_once "PHP_data/config.php";
 
 
 $sql = "SELECT * FROM teams ORDER BY Points DESC";

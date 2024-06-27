@@ -36,7 +36,8 @@ if($conn->connect_error){
     on matches.HomeTeamID = team1.teamID
     INNER join teams team2
     on matches.AwayTeamID = team2.teamID
-    WHERE week = $i;";
+    WHERE week = $i
+    ORDER BY matchDate ASC, matchTime ASC;";
   
   $result = $conn->query($query);
  

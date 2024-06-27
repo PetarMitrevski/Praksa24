@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     WHERE matchID = $id  
     ";
 
-    if($homeTeam != $awayTeam){
+    if($homeTeam !== $awayTeam){
         $conn->query($sql);
         header("Location: ../index.php");
         exit;

@@ -27,10 +27,65 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
 
- 
- if(!($home === $away)){
+
+
+
+
+ if($home !== $away){
  $statement = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
- VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore);";
+ VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore)
+ ORDER BY matchDate AND matchTime ASC;";
+
+ if($homeScore > $awayScore){
+    
+    $query = "UPDATE teams
+    SET Wins = Wins + 1, Points = 3 * Wins + Draws
+    WHERE teamID = $home;";
+
+    $query2 = "UPDATE teams 
+    Set Losses = Losses + 1
+    Where teamID = $away
+    ORDER BY Points DESC;";
+
+   $conn->query($query);
+   $conn->query($query2);
+ }
+
+ else if($homeScore < $awayScore){
+
+    $query = "UPDATE teams
+    SET Losses = Losses + 1
+    WHERE teamID = $home;";
+
+    $query2 = "UPDATE teams 
+    Set Wins = Wins + 1, Points = 3 * Wins + Draws
+    Where teamID = $away
+    ORDER BY Points DESC;";
+
+   $conn->query($query);
+   $conn->query($query2);
+    
+    
+ }
+
+ else{
+    
+    $query = "UPDATE teams
+    SET Draws = Draws + 1, Points = 3 * Wins + Draws
+    WHERE teamID = $home;";
+
+    $query2 = "UPDATE teams 
+    Set Draws = Draws + 1, Points = 3 * Wins + Draws
+    Where teamID = $away
+    ORDER BY Points DESC;";
+
+   $conn->query($query);
+   $conn->query($query2);
+    
+    
+
+ }
+
  
  $conn->query($statement);
  header("Location: ../index.php");

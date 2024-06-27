@@ -53,17 +53,32 @@ $row = $result->fetch_assoc();
             
              $sql = "SELECT * FROM teams";
              $result = $conn->query($sql);
- 
+
+             $statement = "SELECT 
+             team1.teamID as team_home_id,
+             team2.teamID as team_away_id
+             FROM matches
+             INNER join teams team1
+             on matches.HomeTeamID = team1.teamID
+             INNER join teams team2
+             on matches.AwayTeamID = team2.teamID;";
              
              if (!$result) {
                  die("Error fetching teams: " . $conn->error);
              }
- 
-             
+  
+             $team = $conn->query($statement);
+             $teamHome = $team->fetch_assoc();
+                           
              if ($result->num_rows > 0) {
                  while($row = $result->fetch_assoc()) {
                      $teamID = $row["teamID"];
                      $TeamName = $row["TeamName"];
+
+                     if($teamHome['team_home_id'] === $teamID)
+                     echo "<option selected value='$teamID'>$TeamName</option>";
+
+                     else
                      echo "<option value='$teamID'>$TeamName</option>";
                  }
              } 
@@ -104,6 +119,11 @@ $row = $result->fetch_assoc();
                  while($row = $result->fetch_assoc()) {
                      $teamID = $row["teamID"];
                      $TeamName = $row["TeamName"];
+                    
+                     if($teamHome['team_away_id'] === $teamID)
+                     echo "<option selected value='$teamID'>$TeamName</option>";
+
+                     else
                      echo "<option value='$teamID'>$TeamName</option>";
                  }
 

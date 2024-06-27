@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2024 at 09:34 AM
+-- Generation Time: Jun 27, 2024 at 08:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,9 +43,7 @@ CREATE TABLE `matches` (
 --
 
 INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate`, `matchTime`, `HomeScore`, `AwayScore`) VALUES
-(1, 1, 2, 1, '2024-06-05', '14:00:00', 0, 2),
-(10, 9, 20, 1, '2024-06-28', '15:00:00', 1, 1),
-(11, 9, 20, 1, '2024-06-28', '15:00:00', 1, 1);
+(29, 20, 19, 1, '2024-06-28', '20:57:00', 1, 2);
 
 --
 -- Indexes for dumped tables
@@ -67,7 +65,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables

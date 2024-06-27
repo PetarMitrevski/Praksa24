@@ -33,8 +33,15 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     WHERE matchID = $id  
     ";
 
-    if($conn->query($sql)){
-        echo "Match changed";
+    if($homeTeam != $awayTeam){
+        $conn->query($sql);
+        header("Location: ../index.php");
+        exit;
+    }
+
+    else{
+        header("Location: ../index.php");
+        exit;
     }
     
     $conn->close();

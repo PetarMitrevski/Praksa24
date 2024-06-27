@@ -21,7 +21,7 @@ DELETE FROM matches WHERE matchID = '$id';";
 $conn->query($sql);
 
 if($conn->query($sql)){
-    echo "Deleted sucessfully";
+    header("Location: ../index.php");
     exit;
 }
 

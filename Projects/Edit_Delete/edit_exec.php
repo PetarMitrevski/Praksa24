@@ -53,9 +53,10 @@ else{
         echo "Invalid query";
     }
 
-    else
-    echo "Record changed sucessfully";
-
+    else{
+    header("Location: ../index.php");
+    exit;    
+}
     $conn->close();
      exit;
     

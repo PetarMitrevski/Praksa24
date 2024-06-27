@@ -33,8 +33,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore);";
  
  $conn->query($statement);
- echo "Match added sucessfully";
-
+ header("Location: ../index.php");
+ exit;
  }
 
 else

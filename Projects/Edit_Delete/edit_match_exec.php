@@ -33,11 +33,106 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     WHERE matchID = $id  
     ";
 
+     $homeQuery = "SELECT * from teams WHERE teamID =  $homeTeam;";
+     $awayQuery = "SELECT * from teams WHERE teamID = $awayTeam;";
+     
+     $homeQueryResult = $conn->query($homeQuery);
+     $awayQueryResult = $conn->query($awayQuery);
+
+     $homeRow = $homeQueryResult->fetch_assoc();
+     $awayRow = $awayQueryResult->fetch_assoc(); 
+
+    
     if($homeTeam !== $awayTeam){
+       
+       
+       if( ($homeScore > $awayScore) ){
+         //proveri od baza vrednosta if($homeRow['Losses'] >0)
+         
+         if($homeRow['Losses'] > 0){
+            
+            $query = "UPDATE teams
+            SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses = Losses - 1  
+            WHERE teamID = $homeTeam; 
+           ";
+           $conn->query($query);
+         }
+
+         else{
+
+            $query = "UPDATE teams
+            SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses = 0 
+            WHERE teamID = $homeTeam; 
+           ";
+           $conn->query($query);
+
+         }
+           $query2 = "UPDATE teams
+           SET Losses = Losses + 1
+           WHERE teamID = $awayTeam;
+           ";
+   
+           
+           $conn->query($query2);
+
+
+         }
+
+         
+
+       else if( ($homeScore < $awayScore) ){
+
+        if($awayRow['Losses'] > 0){
+            
+            $query = "UPDATE teams
+            SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses = Losses - 1  
+            WHERE teamID = $awayTeam; 
+           ";
+           $conn->query($query);
+         }
+
+         else{
+
+            $query = "UPDATE teams
+            SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses = 0 
+            WHERE teamID = $awayTeam; 
+           ";
+           $conn->query($query);
+
+         }
+           $query2 = "UPDATE teams
+           SET Losses = Losses + 1
+           WHERE teamID = $homeTeam;
+           ";
+   
+           
+           $conn->query($query2);
+
+       }
+
+       else{
+
+        $query = "UPDATE teams
+        SET Draws = Draws + 1, Points = 3 * Wins + Draws 
+        WHERE teamID = $awayTeam; 
+       ";
+       
+       $query2 = "UPDATE teams
+       SET Draws = Draws + 1, Points = 3 * Wins + Draws  
+       WHERE teamID = $homeTeam;
+       ";
+
+       $conn->query($query);
+       $conn->query($query2);
+
+       }
+
+
         $conn->query($sql);
         header("Location: ../index.php");
         exit;
     }
+
 
     else{
         header("Location: ../index.php");

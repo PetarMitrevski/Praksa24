@@ -42,6 +42,7 @@ WHERE matchID = $id
 ";
 
 
+
     
    
     if($homeTeam !== $awayTeam){
@@ -72,6 +73,15 @@ WHERE matchID = $id
                 $conn->query($query);
      
               }
+
+              
+
+              
+
+
+
+
+
                 $query2 = "UPDATE teams
                 SET Losses = Losses + 1
                 WHERE teamID = $awayTeam;
@@ -114,6 +124,8 @@ WHERE matchID = $id
                     SET Losses = Losses + 1
                     WHERE teamID = $homeTeam;
                     ";
+                
+
             
                     
                     $conn->query($query2);

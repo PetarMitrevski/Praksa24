@@ -12,18 +12,8 @@
 
 <?php
 require_once 'views/navigation.php';
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "premier league";
-//insert into...
 
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if($conn->connect_error){
- die("Connection failed" . $conn->connect_error);
-}
+require_once 'PHP_data/config.php';
 
 $id = $_GET["id"];
  

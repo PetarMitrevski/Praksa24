@@ -2,18 +2,7 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "premier league";
-
-
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if($conn->connect_error){
- die("Connection failed" . $conn->connect_error);
-}
+require_once 'config.php';
 
  $sql = "SELECT MAX(week) AS weeks
  FROM matches";

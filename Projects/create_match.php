@@ -1,6 +1,6 @@
 <?php
 if(file_exists('views/navigation.php'))
-include 'views/navigation.php';
+require_once 'views/navigation.php';
 
 ?>
 
@@ -17,19 +17,10 @@ include 'views/navigation.php';
              <div>
              <label>Home Team:</label>
             <select name="Home" required>
+            
             <?php
             
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "premier league";
-
-
-             $conn = new mysqli($servername, $username, $password, $database);
-
-            if($conn->connect_error){
-            die("Connection failed" . $conn->connect_error);
-            } 
+            require_once 'PHP_data/config.php';
 
            
             $sql = "SELECT * FROM teams";

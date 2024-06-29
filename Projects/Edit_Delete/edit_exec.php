@@ -1,12 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "premier league";
-//insert into...
-
-
-$conn = new mysqli($servername, $username, $password, $database);
+require_once '../PHP_data/config.php';
 
 if($conn->connect_error){
  die("Connection failed" . $conn->connect_error);

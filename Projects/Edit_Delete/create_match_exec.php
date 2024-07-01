@@ -20,14 +20,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
 
+ $check = "SELECT COUNT(*) as entry
+  FROM matches
+  WHERE HomeTeamID = $home AND AwayTeamID = $away;";
 
+   $checking = $conn->query($check);
+   $canInsert = $checking->fetch_assoc();
 
-
-
+ if(!($canInsert['entry'] > 0)){
  if($home !== $away){
+
  $statement = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
  VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore)
- ORDER BY matchDate AND matchTime ASC;";
+ ORDER BY matchDate ASC, matchTime ASC;";
+
+ 
 
  if($homeScore > $awayScore){
     
@@ -75,23 +82,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    $conn->query($query);
    $conn->query($query2);
     
-    
-
  }
 
  
  $conn->query($statement);
  header("Location: ../index.php");
  exit;
- }
 
-else
-echo "Cannot add match";
+}
+ 
+}
 
+
+else{
+header("Location: ../index.php");
+exit;
+}
+
+}
 
 
 $conn->close();
  
-}
+
+
 
 

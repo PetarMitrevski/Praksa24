@@ -12,7 +12,7 @@ $sql = "
 DELETE FROM matches WHERE matchID = '$id';";
 
 
-$statement = "SELECT
+$statement = "SELECT *,
              team1.teamID as team_home_id,
              team2.teamID as team_away_id,
              team1.Wins as points_home_wins,
@@ -49,6 +49,8 @@ $away_draws = $teams['points_home_draws'];
 $home_losses = $teams['points_home_losses'];
 $away_losses = $teams['points_home_losses'];
 
+$query = "";
+$query2 = "";
 
 if($home_score > $away_score){
    
@@ -64,23 +66,21 @@ if($home_score > $away_score){
     WHERE teamID = $home_team;
     ";
 
-    $conn->query($query);
-
-    
 
     if($away_losses > 0)
-    $query = "UPDATE teams 
+    $query2 = "UPDATE teams 
     SET Losses = Losses - 1,Points = 3 * Wins + Draws
     WHERE teamID = $away_team;
     ";
 
     else
-    $query = "UPDATE teams 
+    $query2 = "UPDATE teams 
     SET Losses = 0,Points = 3 * Wins + Draws
     WHERE teamID = $away_team;
     ";
-
+    
     $conn->query($query);
+    $conn->query($query2);
 
 }
 
@@ -88,21 +88,6 @@ if($home_score > $away_score){
 
 else if($home_score < $away_score){
    
-    if($home_losses > 0)
-    $query = "UPDATE teams 
-    SET Losses = Losses - 1,Points = 3 * Wins + Draws
-    WHERE teamID = $home_team;
-    ";
-
-    else
-    $query = "UPDATE teams 
-    SET Losses = 0,Points = 3 * Wins + Draws
-    WHERE teamID = $home_team;
-    ";
-
-    $conn->query($query);
-
-
     if($away_wins > 0)
     $query = "UPDATE teams 
     SET Wins = Wins - 1,Points = 3 * Wins + Draws
@@ -115,33 +100,25 @@ else if($home_score < $away_score){
     WHERE teamID = $away_team;
     ";
 
-    $conn->query($query);
-   
 
-}
-
-
-
-
-else if($home_score === $away_score){
-   
-    
-
-    if($home_draws > 0)
-    $query = "UPDATE teams 
-    SET Draws = Draws - 1,Points = 3 * Wins + Draws
+    if($home_losses > 0)
+    $query2 = "UPDATE teams 
+    SET Losses = Losses - 1,Points = 3 * Wins + Draws
     WHERE teamID = $home_team;
     ";
 
     else
-    $query = "UPDATE teams 
-    SET Draws = 0,Points = 3 * Wins + Draws
+    $query2 = "UPDATE teams 
+    SET Losses = 0,Points = 3 * Wins + Draws
     WHERE teamID = $home_team;
     ";
-
-    $conn->query($query);
-
     
+    $conn->query($query);
+    $conn->query($query2);
+
+}
+
+else{
 
     if($away_draws > 0)
     $query = "UPDATE teams 
@@ -155,8 +132,21 @@ else if($home_score === $away_score){
     WHERE teamID = $away_team;
     ";
 
-    $conn->query($query);
 
+    if($home_draws > 0)
+    $query2 = "UPDATE teams 
+    SET Draws = Draws - 1,Points = 3 * Wins + Draws
+    WHERE teamID = $home_team;
+    ";
+
+    else
+    $query2 = "UPDATE teams 
+    SET Draws = 0,Points = 3 * Wins + Draws
+    WHERE teamID = $home_team;
+    ";
+    
+    $conn->query($query);
+    $conn->query($query2);
 
 }
 

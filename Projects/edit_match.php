@@ -50,7 +50,8 @@ $row = $result->fetch_assoc();
              INNER join teams team1
              on matches.HomeTeamID = team1.teamID
              INNER join teams team2
-             on matches.AwayTeamID = team2.teamID;";
+             on matches.AwayTeamID = team2.teamID;
+             WHERE matchID = $id;";
              
              if (!$result) {
                  die("Error fetching teams: " . $conn->error);

@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
      
 $sql = "UPDATE matches
 SET week = $week, HomeTeamID = $homeTeam, AwayTeamID = $awayTeam, HomeScore = $homeScore, AwayScore = $awayScore, matchDate = '$matchDate', matchTime = '$matchTime'
-WHERE matchID = $id  
+WHERE matchID = $id;  
 ";
 
 

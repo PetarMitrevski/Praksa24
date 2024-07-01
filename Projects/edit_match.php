@@ -50,8 +50,7 @@ $row = $result->fetch_assoc();
              INNER join teams team1
              on matches.HomeTeamID = team1.teamID
              INNER join teams team2
-             on matches.AwayTeamID = team2.teamID
-             Where matchID = $id;";
+             on matches.AwayTeamID = team2.teamID;";
              
              if (!$result) {
                  die("Error fetching teams: " . $conn->error);
@@ -60,7 +59,7 @@ $row = $result->fetch_assoc();
              $team = $conn->query($statement);
              $teamHome = $team->fetch_assoc();
                            
-
+             
                  while($row = $result->fetch_assoc()) {
                      $teamID = $row["teamID"];
                      $TeamName = $row["TeamName"];
@@ -84,7 +83,18 @@ $row = $result->fetch_assoc();
          <select name="Away" required>
              <?php
 
+             $query = "SELECT *,team1.TeamName as team_home, team2.TeamName as team_away 
+             FROM matches
+             JOIN teams as team1
+             ON team1.teamID = matches.HomeTeamID
+             join teams as team2
+             ON team2.teamID = matches.AwayTeamID
+             where matchID = $id;";
 
+             
+             if ($conn->connect_error) {
+                 die("Connection failed: " . $conn->connect_error);
+             }
 
              $sql = "SELECT * FROM teams";
              $result = $conn->query($sql);
@@ -107,6 +117,11 @@ $row = $result->fetch_assoc();
                      echo "<option value='$teamID'>$TeamName</option>";
                  }
 
+            
+             
+             $result = $conn->query($query);
+
+             $record = $result->fetch_assoc();
 
              $conn->close();
              ?>

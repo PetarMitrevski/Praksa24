@@ -28,7 +28,7 @@ $row = $result->fetch_assoc();
              
              <div>
               <label>Week:</label>
-              <input name="identifier" type="hidden" value="<?= $_GET['id'] ?>" />
+              <input name="identifier" type="hidden" value="<?= $_GET['id']; ?>" />
               <input required name="Week" type="text" value="<?=$row['week']; ?>"/>
               </div>
  

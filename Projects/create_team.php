@@ -16,17 +16,17 @@ require_once 'views/navigation.php';
 
              <div>
              <label  for="Wins">Wins:</label>
-             <input required id="Wins" name="Wins" type="number" placeholder="Wins"/>
+             <input min="0" required id="Wins" name="Wins" type="number" placeholder="Wins"/>
              </div>
 
              <div>
              <label>Draws:</label>
-             <input required id="Draws" name="Draws" type="number" placeholder="Draws"/>
+             <input min="0" required id="Draws" name="Draws" type="number" placeholder="Draws"/>
              </div>
              
              <div>
              <label>Losses:</label>
-             <input required name="Losses" id="Losses" type="number" placeholder="Losses"/>
+             <input min="0" required name="Losses" id="Losses" type="number" placeholder="Losses"/>
              </div> 
             
              

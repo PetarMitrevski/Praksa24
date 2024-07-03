@@ -45,37 +45,37 @@ function updateDraw($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch) 
 }
 
 function adjustDrawToWin($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Wins = Wins + 1, Points = 3 * Wins + Draws - 1, Draws = Draws - 1 WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Wins = Wins + 1, Points = 3 * Wins + Draws - 1, Draws =  GREATEST(Draws - 1, 0) WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
 
 function adjustDrawToLoss($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Losses = Losses + 1, Draws = Draws - 1, Points = 3 * Wins + Draws  WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Losses = Losses + 1, Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws  WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
 
 function adjustLossToWin($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses = Losses - 1 WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Wins = Wins + 1, Points = 3 * Wins + Draws, Losses =  GREATEST(Losses - 1, 0) WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
 
 function adjustWinToLoss($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Losses = Losses + 1, Wins = Wins - 1, Points = 3 * Wins + Draws  WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Losses = Losses + 1, Wins =  GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws  WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
 
 function adjustWinToDraw($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Wins = Wins - 1, Draws = Draws + 1, Points = 3 * Wins + Draws  WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Draws = Draws + 1, Points = 3 * Wins + Draws  WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
 
 function adjustLossToDraw($conn, $teamID) {
-    $stmt = $conn->prepare("UPDATE teams SET Draws = Draws + 1, Losses = Losses - 1, Points = 3 * Wins + Draws  WHERE teamID = ?;");
+    $stmt = $conn->prepare("UPDATE teams SET Draws = Draws + 1, Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws  WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }

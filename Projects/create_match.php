@@ -80,12 +80,12 @@ require_once 'views/navigation.php';
              
              <div>
              <label>Home Score:</label>
-             <input required name="Home_score" type="number" placeholder="Score"/>
+             <input min="0" required name="Home_score" type="number" placeholder="Score"/>
              </div>
              
              <div>
              <label>Away Score:</label>
-             <input required name="Away_score" type="number" placeholder="Score"/>
+             <input min="0" required name="Away_score" type="number" placeholder="Score"/>
              </div>
              
              <div>

@@ -37,17 +37,17 @@ $row = $result->fetch_assoc();
 
              <div>
              <label  for="Wins">Wins</label>
-             <input required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?= $row['Wins']; ?>"/>
+             <input min="0" required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?= $row['Wins']; ?>"/>
              </div>
 
              <div>
              <label>Draws</label>
-             <input required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?= $row['Draws']; ?>"/>
+             <input min="0" required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?= $row['Draws']; ?>"/>
              </div>
              
              <div>
              <label>Losses</label>
-             <input required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?= $row['Losses']; ?>"/>
+             <input min="0" required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?= $row['Losses']; ?>"/>
              </div> 
             
              

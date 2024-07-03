@@ -131,12 +131,12 @@ $row = $result->fetch_assoc();
               
               <div>
               <label>Home Score:</label>
-              <input required name="Home_score" type="number" placeholder="Score" value="<?=$record['HomeScore']; ?>"/>
+              <input min="0" required name="Home_score" type="number" placeholder="Score" value="<?=$record['HomeScore']; ?>"/>
               </div>
               
               <div>
               <label>Away Score:</label>
-              <input required name="Away_score" type="number" placeholder="Score" value="<?=$record['AwayScore']; ?>"/>
+              <input min="0" required name="Away_score" type="number" placeholder="Score" value="<?=$record['AwayScore']; ?>"/>
               </div>
               
               <div>

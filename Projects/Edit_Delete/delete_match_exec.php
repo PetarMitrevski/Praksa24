@@ -25,7 +25,7 @@ SELECT *,
 FROM matches
 INNER JOIN teams team1 ON matches.HomeTeamID = team1.teamID
 INNER JOIN teams team2 ON matches.AwayTeamID = team2.teamID
-WHERE matchID = ?
+WHERE matchID = ?;
 ");
 
 $statement->bind_param("i", $id);
@@ -54,9 +54,9 @@ $query2 = "";
 if ($home_score > $away_score) {
     $query = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
     $query2 = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
-} elseif ($home_score < $away_score) {
-    $query = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
-    $query2 = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
+} else if ($home_score < $away_score) {
+    $query = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
+    $query2 = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
 } else {
     $query = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";
     $query2 = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws WHERE teamID = ?";

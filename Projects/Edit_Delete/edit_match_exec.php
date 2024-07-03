@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if ($homeScore_new > $awayScore_new) {
                 updateWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
-            } elseif ($homeScore_new < $awayScore_new) {
+            } else if ($homeScore_new < $awayScore_new) {
                 updateWinLoss($conn, $awayTeam, $homeTeam, $awayRow, $homeRow, $oldMatch, false);
             } else {
                 updateDraw($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch);

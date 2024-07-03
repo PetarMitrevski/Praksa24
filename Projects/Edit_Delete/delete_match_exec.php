@@ -1,7 +1,7 @@
 <?php
 
 require_once '../PHP_data/config.php';
-require_once '../PHP_data/functions.php';
+
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

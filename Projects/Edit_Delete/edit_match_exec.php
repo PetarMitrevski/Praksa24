@@ -1,6 +1,7 @@
 <?php
 
 require_once '../PHP_data/config.php';
+require_once '../PHP_data/functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = htmlspecialchars($_POST['identifier']);

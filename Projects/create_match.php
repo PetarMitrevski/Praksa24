@@ -11,7 +11,7 @@ require_once 'views/navigation.php';
              
             <div>
              <label>Week:</label>
-             <input required name="Week" type="text"/>
+             <input min="1" required name="Week" type="number"/>
              </div>
 
              <div>

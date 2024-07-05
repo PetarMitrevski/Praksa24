@@ -29,7 +29,7 @@ $row = $result->fetch_assoc();
              <div>
               <label>Week:</label>
               <input name="identifier" type="hidden" value="<?= $_GET['id']; ?>" />
-              <input required name="Week" type="text" value="<?=$row['week']; ?>"/>
+              <input min="1" required name="Week" type="number" value="<?=$row['week']; ?>"/>
               </div>
  
               <div>

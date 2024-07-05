@@ -79,3 +79,18 @@ function adjustLossToDraw($conn, $teamID) {
     $stmt->bind_param("i", $teamID);
     $stmt->execute();
 }
+
+function updateTotalGoals($conn, $teamID, $newGoals, $oldGoals) {
+    if($newGoals > $oldGoals){
+    $stmt = $conn->prepare("UPDATE teams SET Goals = Goals + $newGoals - $oldGoals WHERE teamID = ?;");
+    $stmt->bind_param("i", $teamID);
+    $stmt->execute();
+    }
+
+    else if($newGoals <= $oldGoals){
+    $stmt = $conn->prepare("UPDATE teams SET Goals = Goals + $oldGoals - $newGoals WHERE teamID = ?;");
+    $stmt->bind_param("i", $teamID);
+    $stmt->execute();    
+    }
+    
+}

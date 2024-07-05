@@ -20,14 +20,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  $matchTime = htmlspecialchars($_POST['Match_time']);
 
 
- $check = "SELECT COUNT(*) as entry
-  FROM matches
-  WHERE HomeTeamID = $home AND AwayTeamID = $away;";
+  $check = "SELECT
+    CASE
+        WHEN EXISTS (
+            SELECT 1
+            FROM matches
+            WHERE HomeTeamID = $home AND week = $week
+        ) THEN 'Value exists'
+        ELSE 'Value does not exist'
+    END AS value_check;";
 
    $checking = $conn->query($check);
    $canInsert = $checking->fetch_assoc();
 
- if(!($canInsert['entry'] > 0)){
+  $check2 = "SELECT
+    CASE
+        WHEN EXISTS (
+            SELECT 1
+            FROM matches
+            WHERE AwayTeamID = $away AND week = $week
+        ) THEN 'Value exists'
+        ELSE 'Value does not exist'
+    END AS value_check;";
+
+  $checking2 = $conn->query($check2);
+  $canInsert2 = $checking2->fetch_assoc();
+
+  
+ if($canInsert['value_check'] === "Value does not exist" && $canInsert2['value_check'] === "Value does not exist"){
  if($home !== $away){
 
  $statement = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
@@ -39,11 +59,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  if($homeScore > $awayScore){
     
     $query = "UPDATE teams
-    SET Wins = Wins + 1, Points = 3 * Wins + Draws
+    SET Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
     WHERE teamID = $home;";
 
     $query2 = "UPDATE teams 
-    Set Losses = Losses + 1
+    Set Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
     Where teamID = $away
     ORDER BY Points DESC;";
 
@@ -54,11 +74,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  else if($homeScore < $awayScore){
 
     $query = "UPDATE teams
-    SET Losses = Losses + 1
+    SET Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
     WHERE teamID = $home;";
 
     $query2 = "UPDATE teams 
-    Set Wins = Wins + 1, Points = 3 * Wins + Draws
+    Set Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
     Where teamID = $away
     ORDER BY Points DESC;";
 
@@ -71,11 +91,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  else{
     
     $query = "UPDATE teams
-    SET Draws = Draws + 1, Points = 3 * Wins + Draws
+    SET Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
     WHERE teamID = $home;";
 
     $query2 = "UPDATE teams 
-    Set Draws = Draws + 1, Points = 3 * Wins + Draws
+    Set Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
     Where teamID = $away
     ORDER BY Points DESC;";
 

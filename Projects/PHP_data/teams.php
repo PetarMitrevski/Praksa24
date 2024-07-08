@@ -7,8 +7,11 @@ $sql = "SELECT * FROM teams ORDER BY Points DESC";
 $result = $conn->query($sql);
 $number = 1;
 
+if(!$result)
+die("Invalid query");
 
 
+ 
 echo "
   <tr>
  <th>#</th>

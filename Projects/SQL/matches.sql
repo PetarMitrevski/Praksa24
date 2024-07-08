@@ -34,8 +34,8 @@ CREATE TABLE `matches` (
   `week` int(11) NOT NULL,
   `matchDate` date NOT NULL,
   `matchTime` time NOT NULL,
-  `HomeScore` int(11) DEFAULT NULL,
-  `AwayScore` int(11) DEFAULT NULL
+  `HomeScore` int(11) NOT NULL,
+  `AwayScore` int(11) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

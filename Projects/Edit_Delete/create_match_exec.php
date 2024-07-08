@@ -2,129 +2,93 @@
 
 require_once '../PHP_data/config.php';
 
-if($conn->connect_error){
- die("Connection failed" . $conn->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $week = htmlspecialchars($_POST['Week']);
+    $home = htmlspecialchars($_POST['Home']);
+    $away = htmlspecialchars($_POST['Away']);
+    $homeScore = htmlspecialchars($_POST['Home_score']);
+    $awayScore = htmlspecialchars($_POST['Away_score']);
+    $matchDate = htmlspecialchars($_POST['Match_date']);
+    $matchTime = htmlspecialchars($_POST['Match_time']);
 
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-
- $week = htmlspecialchars($_POST['Week']);
- $home = htmlspecialchars($_POST['Home']);
- $away = htmlspecialchars($_POST['Away']);
- $homeScore = htmlspecialchars($_POST['Home_score']);
- $awayScore = htmlspecialchars($_POST['Away_score']);
- $matchDate = htmlspecialchars($_POST['Match_date']);
- $matchTime = htmlspecialchars($_POST['Match_time']);
-
-
-  $check = "SELECT
-    CASE
-        WHEN EXISTS (
-            SELECT 1
-            FROM matches
-            WHERE HomeTeamID = $home AND week = $week
-        ) THEN 'Value exists'
-        ELSE 'Value does not exist'
-    END AS value_check;";
-
-   $checking = $conn->query($check);
-   $canInsert = $checking->fetch_assoc();
-
-  $check2 = "SELECT
-    CASE
-        WHEN EXISTS (
-            SELECT 1
-            FROM matches
-            WHERE AwayTeamID = $away AND week = $week
-        ) THEN 'Value exists'
-        ELSE 'Value does not exist'
-    END AS value_check;";
-
-  $checking2 = $conn->query($check2);
-  $canInsert2 = $checking2->fetch_assoc();
-
-  
- if($canInsert['value_check'] === "Value does not exist" && $canInsert2['value_check'] === "Value does not exist"){
- if($home !== $away){
-
- $statement = "INSERT INTO matches(HomeTeamID,AwayTeamID,week,matchDate,matchTime,HomeScore,AwayScore)
- VALUE($home,$away,$week,'$matchDate','$matchTime',$homeScore,$awayScore)
- ORDER BY matchDate ASC, matchTime ASC;";
-
- 
-
- if($homeScore > $awayScore){
+    // Check if either team has already played a match in the same week
+    $checkHomeQuery = "SELECT * FROM matches 
+                       WHERE week = $week 
+                       AND (HomeTeamID = $home OR AwayTeamID = $home)";
     
-    $query = "UPDATE teams
-    SET Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
-    WHERE teamID = $home;";
-
-    $query2 = "UPDATE teams 
-    Set Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
-    Where teamID = $away
-    ORDER BY Points DESC;";
-
-   $conn->query($query);
-   $conn->query($query2);
- }
-
- else if($homeScore < $awayScore){
-
-    $query = "UPDATE teams
-    SET Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
-    WHERE teamID = $home;";
-
-    $query2 = "UPDATE teams 
-    Set Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
-    Where teamID = $away
-    ORDER BY Points DESC;";
-
-   $conn->query($query);
-   $conn->query($query2);
+    $checkAwayQuery = "SELECT * FROM matches 
+                       WHERE week = $week 
+                       AND (HomeTeamID = $away OR AwayTeamID = $away)";
     
-    
- }
+    $resultHome = $conn->query($checkHomeQuery);
+    $resultAway = $conn->query($checkAwayQuery);
 
- else{
-    
-    $query = "UPDATE teams
-    SET Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
-    WHERE teamID = $home;";
+    if ($resultHome->num_rows > 0 || $resultAway->num_rows > 0) {
+        // Redirect or handle duplicate match scenario (if necessary)
+        header("Location: ../index.php?error=duplicate_match");
+        exit;
+    }
 
-    $query2 = "UPDATE teams 
-    Set Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
-    Where teamID = $away
-    ORDER BY Points DESC;";
+    if ($home !== $away) {
+        // Insert the match details
+        $statement = "INSERT INTO matches(HomeTeamID, AwayTeamID, week, matchDate, matchTime, HomeScore, AwayScore)
+                      VALUES ($home, $away, $week, '$matchDate', '$matchTime', $homeScore, $awayScore)";
 
-   $conn->query($query);
-   $conn->query($query2);
-    
- }
+        if ($homeScore > $awayScore) {
+            // Update for home team win
+            $query = "UPDATE teams
+                      SET Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
+                      WHERE teamID = $home";
+            
+            $query2 = "UPDATE teams 
+                       SET Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
+                       WHERE teamID = $away";
 
- 
- $conn->query($statement);
- header("Location: ../index.php");
- exit;
+            $conn->query($query);
+            $conn->query($query2);
+        } else if ($homeScore < $awayScore) {
+            // Update for away team win
+            $query = "UPDATE teams
+                      SET Losses = Losses + 1, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
+                      WHERE teamID = $home";
+            
+            $query2 = "UPDATE teams 
+                       SET Wins = Wins + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
+                       WHERE teamID = $away";
+            
+            $conn->query($query);
+            $conn->query($query2);
+        } else {
+            // Update for draw
+            $query = "UPDATE teams
+                      SET Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $homeScore
+                      WHERE teamID = $home";
+            
+            $query2 = "UPDATE teams 
+                       SET Draws = Draws + 1, Points = 3 * Wins + Draws, MatchesPlayed = MatchesPlayed + 1, Goals = Goals + $awayScore
+                       WHERE teamID = $away";
+            
+            $conn->query($query);
+            $conn->query($query2);
+        }
 
+        // Execute the match insertion statement
+        $conn->query($statement);
+        header("Location: ../index.php");
+        exit;
+    } else {
+        // Handle if home and away team are the same
+        header("Location: ../index.php?error=same_teams");
+        exit;
+    }
+} else {
+    header("Location: ../index.php");
+    exit;
 }
- 
-}
-
-
-else{
-header("Location: ../index.php");
-exit;
-}
-
-}
-
 
 $conn->close();
- 
-
-
-
-
+?>

@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $awayScore = htmlspecialchars($_POST['Away_score']);
     $matchDate = htmlspecialchars($_POST['Match_date']);
     $matchTime = htmlspecialchars($_POST['Match_time']);
-
+ 
     // Check if either team has already played a match in the same week
     $checkHomeQuery = "SELECT * FROM matches 
                        WHERE week = $week 

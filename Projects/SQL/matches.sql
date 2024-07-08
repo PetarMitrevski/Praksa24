@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2024 at 12:40 PM
+-- Generation Time: Jul 08, 2024 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,6 +39,14 @@ CREATE TABLE `matches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `matches`
+--
+
+INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate`, `matchTime`, `HomeScore`, `AwayScore`) VALUES
+(254, 2, 7, 1, '2024-07-16', '18:12:00', 2, 1),
+(255, 2, 7, 2, '2024-07-16', '19:13:00', 2, 1);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -47,7 +55,8 @@ CREATE TABLE `matches` (
 --
 ALTER TABLE `matches`
   ADD PRIMARY KEY (`matchID`),
-  ADD UNIQUE KEY `UC_team` (`HomeTeamID`,`AwayTeamID`);
+  ADD KEY `HomeTeamID` (`HomeTeamID`),
+  ADD KEY `AwayTeamID` (`AwayTeamID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -57,7 +66,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
+  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- Constraints for dumped tables

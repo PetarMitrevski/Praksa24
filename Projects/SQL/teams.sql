@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2024 at 12:40 PM
+-- Generation Time: Jul 08, 2024 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,10 +43,10 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`, `MatchesPlayed`, `Goals`) VALUES
-(2, 'Arsenal', 0, 0, 0, 0, 0, 0),
+(2, 'Arsenal', 6, 2, 0, 0, 2, 4),
 (5, 'Chelsea', 0, 0, 0, 0, 0, 0),
 (6, 'Newcastle', 0, 0, 0, 0, 0, 0),
-(7, 'Aston Villa', 0, 0, 0, 0, 0, 0),
+(7, 'Aston Villa', 0, 0, 0, 2, 2, 2),
 (8, 'Bournemouth', 0, 0, 0, 0, 0, 0),
 (9, 'Brentford', 0, 0, 0, 0, 0, 0),
 (10, 'Brighton', 0, 0, 0, 0, 0, 0),

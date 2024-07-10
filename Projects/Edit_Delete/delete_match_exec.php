@@ -15,13 +15,7 @@ $sql = "DELETE FROM matches WHERE matchID = ?";
 $statement = $conn->prepare("
 SELECT *,
        team1.teamID as team_home_id,
-       team2.teamID as team_away_id,
-       team1.Wins as points_home_wins,
-       team2.Wins as points_away_wins,
-       team1.Draws as points_home_draws,
-       team2.Draws as points_away_draws,
-       team1.Losses as points_home_losses,
-       team2.Losses as points_away_losses
+       team2.teamID as team_away_id
 FROM matches
 INNER JOIN teams team1 ON matches.HomeTeamID = team1.teamID
 INNER JOIN teams team2 ON matches.AwayTeamID = team2.teamID
@@ -39,27 +33,19 @@ $away_score = $teams['AwayScore'];
 $home_team = $teams['team_home_id'];
 $away_team = $teams['team_away_id'];
 
-$home_wins = $teams['points_home_wins'];
-$away_wins = $teams['points_away_wins'];
-
-$home_draws = $teams['points_home_draws'];
-$away_draws = $teams['points_away_draws'];
-
-$home_losses = $teams['points_home_losses'];
-$away_losses = $teams['points_away_losses'];
 
 $query = "";
 $query2 = "";
 
 if ($home_score > $away_score) {
-    $query = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0) WHERE teamID = ?";
-    $query2 = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0) WHERE teamID = ?";
+    $query = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0), HomeWins = GREATEST(HomeWins - 1, 0), HomePoints = 3 * HomeWins + HomeDraws, HomeGoals = GREATEST(HomeGoals - $home_score, 0) WHERE teamID = ?";
+    $query2 = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0), AwayLosses = GREATEST(AwayLosses - 1, 0), AwayPoints = 3 * AwayWins + AwayDraws, AwayGoals = GREATEST(AwayGoals - $away_score, 0) WHERE teamID = ?";
 } else if ($home_score < $away_score) {
-    $query = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0) WHERE teamID = ?";
-    $query2 = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0) WHERE teamID = ?";
+    $query = "UPDATE teams SET Losses = GREATEST(Losses - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0), HomeLosses = GREATEST(HomeLosses - 1, 0), HomePoints = 3 * HomeWins + HomeDraws, HomeGoals = GREATEST(HomeGoals - $home_score, 0) WHERE teamID = ?";
+    $query2 = "UPDATE teams SET Wins = GREATEST(Wins - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0), AwayWins = GREATEST(AwayWins - 1, 0), AwayPoints = 3 * AwayWins + AwayDraws, AwayGoals = GREATEST(AwayGoals - $away_score, 0) WHERE teamID = ?";
 } else {
-    $query = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0) WHERE teamID = ?";
-    $query2 = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0) WHERE teamID = ?";
+    $query = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $home_score, 0), HomeDraws = GREATEST(HomeDraws - 1, 0), HomePoints = 3 * HomeWins + HomeDraws, HomeGoals = GREATEST(HomeGoals - $home_score, 0) WHERE teamID = ?";
+    $query2 = "UPDATE teams SET Draws = GREATEST(Draws - 1, 0), Points = 3 * Wins + Draws, MatchesPlayed = GREATEST(MatchesPlayed - 1, 0), Goals = GREATEST(Goals - $away_score, 0), AwayDraws = GREATEST(AwayDraws - 1, 0), AwayPoints = 3 * AwayWins + AwayDraws, AwayGoals = GREATEST(AwayGoals - $away_score, 0) WHERE teamID = ?";
 }
 
 $stmt1 = $conn->prepare($query);

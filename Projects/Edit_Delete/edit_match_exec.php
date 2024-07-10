@@ -25,11 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             updateTotalGoals($conn, $homeTeam, $homeScore_new, $oldMatch["HomeScore"]);
             updateTotalGoals($conn, $awayTeam, $awayScore_new, $oldMatch["AwayScore"]);
+            updateTotalHomeGoals($conn, $homeTeam, $homeScore_new, $oldMatch["HomeScore"]);
+            updateTotalAwayGoals($conn, $awayTeam, $awayScore_new, $oldMatch["AwayScore"]);
 
             if ($homeScore_new > $awayScore_new) {
                 updateWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
+                updateHomeWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
             } else if ($homeScore_new < $awayScore_new) {
                 updateWinLoss($conn, $awayTeam, $homeTeam, $awayRow, $homeRow, $oldMatch, false);
+                updateAwayWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
             } else {
                 updateDraw($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch);
             }

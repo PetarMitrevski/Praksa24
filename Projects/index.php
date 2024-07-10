@@ -5,6 +5,13 @@ require_once 'views/navigation.php';
 
   
 <section class="clubs">
+
+
+<div class="btn-group clubs__buttons_stats">
+      <button class="btn">Overall</button>
+      <button class="btn">Home</button>
+      <button class="btn">Away</button>
+    </div>
   
 <table id="table_overall" class="clubs__table-overall">
        
@@ -14,6 +21,24 @@ require_once 'views/navigation.php';
           
         ?>
         </table>
+
+<table id="table_home" class="clubs__table-home">
+          <?php
+           
+         include "PHP_data/homeStats.php";
+            
+          ?>
+     </table>
+
+
+     <table id="table_away" class="clubs__table-away">
+          <?php
+           
+         include "PHP_data/awayStats.php";
+            
+          ?>
+
+     </table>
         </section>
 
        
@@ -32,9 +57,8 @@ require_once 'views/navigation.php';
         <p>&copy; 2024 Example Company.<br> All rights reserved.</p>
         </footer>
 
-        
-
-        <script src="JS/index.js"></script>
+                
+        <script src="JS/tables.js"></script>
         </body>
         </html>
 

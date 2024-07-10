@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2024 at 02:11 PM
+-- Generation Time: Jul 10, 2024 at 02:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,34 +35,44 @@ CREATE TABLE `teams` (
   `Draws` int(11) NOT NULL,
   `Losses` int(11) NOT NULL,
   `MatchesPlayed` int(11) DEFAULT 0,
-  `Goals` int(11) DEFAULT 0
+  `Goals` int(11) DEFAULT 0,
+  `HomePoints` int(11) DEFAULT 0,
+  `AwayPoints` int(11) DEFAULT 0,
+  `HomeWins` int(11) DEFAULT 0,
+  `AwayWins` int(11) DEFAULT 0,
+  `HomeDraws` int(11) DEFAULT 0,
+  `AwayDraws` int(11) DEFAULT 0,
+  `HomeLosses` int(11) DEFAULT 0,
+  `AwayLosses` int(11) DEFAULT 0,
+  `HomeGoals` int(11) DEFAULT 0,
+  `AwayGoals` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `teams`
 --
 
-INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`, `MatchesPlayed`, `Goals`) VALUES
-(2, 'Arsenal', 7, 2, 1, 0, 3, 5),
-(5, 'Chelsea', 0, 0, 0, 0, 0, 0),
-(6, 'Newcastle', 0, 0, 0, 0, 0, 0),
-(7, 'Aston Villa', 0, 0, 0, 2, 2, 2),
-(8, 'Bournemouth', 0, 0, 0, 0, 0, 0),
-(9, 'Brentford', 0, 0, 0, 0, 0, 0),
-(10, 'Brighton', 1, 0, 1, 0, 1, 1),
-(11, 'Everton', 0, 0, 0, 0, 0, 0),
-(12, 'Fulham', 0, 0, 0, 0, 0, 0),
-(13, 'Leicester City', 0, 0, 0, 0, 0, 0),
-(14, 'Nottingham Forest', 0, 0, 0, 0, 0, 0),
-(15, 'Southampton', 0, 0, 0, 0, 0, 0),
-(16, 'Tottenham', 0, 0, 0, 0, 0, 0),
-(17, 'West Ham', 0, 0, 0, 0, 0, 0),
-(18, 'Wolverhampton', 0, 0, 0, 0, 0, 0),
-(19, 'Ipswich Town', 0, 0, 0, 0, 0, 0),
-(24, 'Manchester United', 0, 0, 0, 0, 0, 0),
-(27, 'Liverpool', 0, 0, 0, 0, 0, 0),
-(33, 'Sheffield', 0, 0, 0, 0, 0, 0),
-(35, 'Manchester City', 0, 0, 0, 0, 0, 0);
+INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`, `MatchesPlayed`, `Goals`, `HomePoints`, `AwayPoints`, `HomeWins`, `AwayWins`, `HomeDraws`, `AwayDraws`, `HomeLosses`, `AwayLosses`, `HomeGoals`, `AwayGoals`) VALUES
+(2, 'Arsenal', 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0),
+(5, 'Chelsea', 4, 1, 1, 0, 2, 3, 1, 3, 0, 1, 1, 0, 0, 0, 1, 2),
+(6, 'Newcastle', 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+(7, 'Aston Villa', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(8, 'Bournemouth', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 'Brentford', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(10, 'Brighton', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(11, 'Everton', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(12, 'Fulham', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(13, 'Leicester City', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(14, 'Nottingham Forest', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(15, 'Southampton', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(16, 'Tottenham', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(17, 'West Ham', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(18, 'Wolverhampton', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(19, 'Ipswich Town', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(24, 'Manchester United', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(27, 'Liverpool', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(33, 'Sheffield', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, 'Manchester City', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -83,7 +93,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

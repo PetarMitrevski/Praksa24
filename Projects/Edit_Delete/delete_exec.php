@@ -11,7 +11,6 @@ $id = $_GET["id"];
 $sql = "
 DELETE FROM teams WHERE teamID = '$id';";
 
-$conn->query($sql);
 
 if($conn->query($sql)){
     header("Location: ../index.php");

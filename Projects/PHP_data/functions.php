@@ -8,6 +8,24 @@ function getMatchById($conn, $id) {
     return $stmt->get_result()->fetch_assoc();
 }
 
+
+function updateTotalHomeGoals($conn, $teamID, $newGoals, $oldGoals) {
+    if($newGoals > $oldGoals){
+    $stmt = $conn->prepare("UPDATE teams SET HomeGoals = HomeGoals + $newGoals - $oldGoals WHERE teamID = ?;");
+    $stmt->bind_param("i", $teamID);
+    $stmt->execute();
+    }
+
+    else if($newGoals <= $oldGoals){
+    $stmt = $conn->prepare("UPDATE teams SET HomeGoals = HomeGoals + $oldGoals - $newGoals WHERE teamID = ?;");
+    $stmt->bind_param("i", $teamID);
+    $stmt->execute();    
+    }
+    
+}
+
+
+/*
 function getTeamById($conn, $teamID) {
     $stmt = $conn->prepare("SELECT * FROM teams WHERE teamID = ?;");
     $stmt->bind_param("i", $teamID);
@@ -230,3 +248,5 @@ function updateTotalAwayGoals($conn, $teamID, $newGoals, $oldGoals) {
     }
     
 }
+
+*/

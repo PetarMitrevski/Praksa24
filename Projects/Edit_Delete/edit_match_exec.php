@@ -12,41 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $awayScore_new = htmlspecialchars($_POST['Away_score']);
     $matchDate = htmlspecialchars($_POST['Match_date']);
     $matchTime = htmlspecialchars($_POST['Match_time']);
+    $oldMatch = getMatchById($conn, $id);
 
     if ($homeTeam !== $awayTeam) {
-        $conn->begin_transaction();
 
-        try {
-            $oldMatch = getMatchById($conn, $id);
-            $homeRow = getTeamById($conn, $homeTeam);
-            $awayRow = getTeamById($conn, $awayTeam);
+          
+    } 
 
-            updateMatch($conn, $id, $week, $homeTeam, $awayTeam, $homeScore_new, $awayScore_new, $matchDate, $matchTime);
 
-            updateTotalGoals($conn, $homeTeam, $homeScore_new, $oldMatch["HomeScore"]);
-            updateTotalGoals($conn, $awayTeam, $awayScore_new, $oldMatch["AwayScore"]);
-            updateTotalHomeGoals($conn, $homeTeam, $homeScore_new, $oldMatch["HomeScore"]);
-            updateTotalAwayGoals($conn, $awayTeam, $awayScore_new, $oldMatch["AwayScore"]);
-
-            if ($homeScore_new > $awayScore_new) {
-                updateWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
-                updateHomeWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
-            } else if ($homeScore_new < $awayScore_new) {
-                updateWinLoss($conn, $awayTeam, $homeTeam, $awayRow, $homeRow, $oldMatch, false);
-                updateAwayWinLoss($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch, true);
-            } else {
-                updateDraw($conn, $homeTeam, $awayTeam, $homeRow, $awayRow, $oldMatch);
-            }
-
-            $conn->commit();
-            header("Location: ../index.php");
-            exit;
-        } catch (Exception $e) {
-            $conn->rollback();
-            header("Location: ../index.php?error=1");
-            exit;
-        }
-    } else {
+    
+    else {
         header("Location: ../index.php?error=2");
         exit;
     }

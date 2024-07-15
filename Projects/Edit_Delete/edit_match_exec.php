@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     MatchesPlayed = GREATEST(MatchesPlayed - 1, 0),
                     HomeWins = GREATEST(HomeWins - 1, 0),
                     HomeLosses = GREATEST(HomeLosses - 1, 0),
-                    HomeGoals = HomeGoals - $oldMatch[HomeScore],
+                    HomeGoals = GREATEST(HomeGoals - $oldMatch[HomeScore], 0),
                     Wins = HomeWins + AwayWins,
                     Draws = HomeDraws + AwayDraws,
                     Losses = HomeLosses + AwayLosses,

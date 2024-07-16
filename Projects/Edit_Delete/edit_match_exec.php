@@ -1,11 +1,9 @@
 <?php
 
 require_once '../PHP_data/config.php';
-require_once '../PHP_data/functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = htmlspecialchars($_POST['identifier']);
-    $week = htmlspecialchars($_POST['Week']);
     $homeTeam = htmlspecialchars($_POST['Home']);
     $awayTeam = htmlspecialchars($_POST['Away']);
     $homeScore_new = htmlspecialchars($_POST['Home_score']);
@@ -20,105 +18,58 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $oldMatch = $stmt->get_result()->fetch_assoc();
 
-
     $sql = "UPDATE matches
-    SET week = $week, HomeTeamID = $homeTeam, AwayTeamID = $awayTeam, HomeScore = $homeScore_new, AwayScore = $awayScore_new, matchDate = '$matchDate', matchTime = '$matchTime'
+    SET HomeScore = $homeScore_new, AwayScore = $awayScore_new, matchDate = '$matchDate', matchTime = '$matchTime'
     WHERE matchID = $id  
     ";
 
-    if ($homeTeam !== $awayTeam) {
-
-        if($homeTeam != $oldMatch['HomeTeamID']){
-
-            if($homeScore_new > $awayScore_new){
-
-                if($oldMatch['HomeScore'] > $oldMatch['AwayScore']){
-
-                    $query = "UPDATE teams
-                    SET 
-                    MatchesPlayed = MatchesPlayed + 1,
-                    HomeWins = HomeWins + 1,
-                    HomeGoals = $homeScore_new,
-                    Wins = HomeWins + AwayWins,
-                    Draws = HomeDraws + AwayDraws,
-                    Losses = HomeLosses + AwayLosses,
-                    Goals = HomeGoals + AwayGoals,
-                    HomePoints = 3 * HomeWins + HomeDraws,
-                    Points = HomePoints + AwayPoints
-                    WHERE teamID = $homeTeam;";
-
-                    $query2 = "UPDATE teams SET 
-                    MatchesPlayed = GREATEST(MatchesPlayed - 1, 0),
-                    HomeWins = GREATEST(HomeWins - 1, 0),
-                    HomeGoals = HomeGoals - $oldMatch[HomeScore],
-                    Wins = HomeWins + AwayWins,
-                    Draws = HomeDraws + AwayDraws,
-                    Losses = HomeLosses + AwayLosses,
-                    Goals = HomeGoals + AwayGoals,
-                    HomePoints = 3 * HomeWins + HomeDraws,
-                    Points = HomePoints + AwayPoints
-                    WHERE teamID = $oldMatch[HomeTeamID];
-                    ";
-                    
-                    $conn->query($query);
-                    $conn->query($query2);
-                }
-               
-
-                else if($oldMatch['HomeScore'] < $oldMatch['AwayScore']){
-
-                    $query = "UPDATE teams
-                    SET 
-                    MatchesPlayed = MatchesPlayed + 1,
-                    HomeWins = HomeWins + 1,
-                    HomeLosses = GREATEST(HomeLosses - 1, 0),
-                    HomeGoals = $homeScore_new,
-                    Wins = HomeWins + AwayWins,
-                    Draws = HomeDraws + AwayDraws,
-                    Losses = HomeLosses + AwayLosses,
-                    Goals = HomeGoals + AwayGoals,
-                    HomePoints = 3 * HomeWins + HomeDraws,
-                    Points = HomePoints + AwayPoints
-                    WHERE teamID = $homeTeam;";
-
-                    $query2 = "UPDATE teams SET 
-                    MatchesPlayed = GREATEST(MatchesPlayed - 1, 0),
-                    HomeWins = GREATEST(HomeWins - 1, 0),
-                    HomeLosses = GREATEST(HomeLosses - 1, 0),
-                    HomeGoals = GREATEST(HomeGoals - $oldMatch[HomeScore], 0),
-                    Wins = HomeWins + AwayWins,
-                    Draws = HomeDraws + AwayDraws,
-                    Losses = HomeLosses + AwayLosses,
-                    Goals = HomeGoals + AwayGoals,
-                    HomePoints = 3 * HomeWins + HomeDraws,
-                    Points = HomePoints + AwayPoints
-                    WHERE teamID = $oldMatch[HomeTeamID];
-                    ";
-
-                    $query3 = "UPDATE teams SET
-                     AwayWins = GREATEST(AwayWins - 1, 0),
-                     AwayLosses = AwayLosses + 1,
-                     AwayPoints = 3 * Awayins + AwayDraws,
-                     Points = HomePoints + AwayPoints
-                     WHERE teamID = $awayTeam;
-                    ";
-                    
-                    $conn->query($query);
-                    $conn->query($query2);
-                    $conn->query($query3);
-                }
-                
-            }
-        }
-        $conn->query($sql); 
-    } 
-
-  
     
-    else {
-        header("Location: ../index.php?error=2");
-        exit;
+    if($homeScore_new > $awayScore_new){
+
+        if($oldMatch['HomeScore'] > $oldMatch['AwayScore']){
+
+            $query = "UPDATE teams SET HomeGoals = HomeGoals - $oldMatch[HomeScore] + $homeScore_new, HomePoints = 3 * HomeWins + HomeDraws, Points = HomePoints + AwayPoints, Goals = HomeGoals + AwayGoals WHERE teamID = $homeTeam;";
+            $query2 = "UPDATE teams SET AwayGoals = AwayGoals - $oldMatch[AwayScore] + $awayScore_new, Goals = HomeGoals + AwayGoals, AwayPoints = 3 * AwayWins + AwayDraws, Points = HomePoints + AwayPoints WHERE teamID = $awayTeam;";
+
+            $conn->query($query);
+            $conn->query($query2);
+            $conn->query($sql);
+
+            header("Location: ../index.php");
+            exit;  
+
+        }
+
+        else if($oldMatch['HomeScore'] < $oldMatch['AwayScore']){
+
+            $query = "UPDATE teams SET HomeGoals = HomeGoals - $oldMatch[HomeScore] + $homeScore_new, HomeLosses = GREATEST(HomeLosses - 1, 0), HomeWins = HomeWins + 1, Losses = HomeLosses + AwayLosses, Wins = HomeWins + AwayWins, Goals = HomeGoals + AwayGoals, HomePoints = 3 * HomeWins + HomeDraws, Points = HomePoints + AwayPoints WHERE teamID = $homeTeam";
+            $query2 = "UPDATE teams SET AwayGoals = AwayGoals - $oldMatch[AwayScore] + $awayScore_new, AwayWins = GREATEST(AwayWins - 1, 0), AwayLosses = AwayLosses + 1, Losses = HomeLosses + AwayLosses, Wins = HomeWins + AwayWins, Goals = HomeGoals + AwayGoals, AwayPoints = 3 * AwayWins + AwayDraws, Points = HomePoints + AwayPoints WHERE teamID = $awayTeam";
+
+            $conn->query($query);
+            $conn->query($query2);
+            $conn->query($sql);
+
+            header("Location: ../index.php");
+            exit;  
+        }
+
+        else{
+
+            $query = "UPDATE teams SET HomeGoals = HomeGoals - $oldMatch[HomeScore] + $homeScore_new, HomeDraws = GREATEST(HomeDraws - 1, 0), HomeWins = HomeWins + 1, Draws = HomeDraws + AwayDraws, Wins = HomeWins + AwayWins, Goals = HomeGoals + AwayGoals, HomePoints = 3 * HomeWins + HomeDraws, Points = HomePoints + AwayPoints WHERE teamID = $homeTeam";
+            $query2 = "UPDATE teams SET AwayGoals = AwayGoals - $oldMatch[AwayScore] + $awayScore_new, AwayDraws = GREATEST(AwayDraws - 1, 0), AwayLosses = AwayLosses + 1, Losses = HomeLosses + AwayLosses, Draws = HomeDraws + AwayDraws, Goals = HomeGoals + AwayGoals, AwayPoints = 3 * AwayWins + AwayDraws, Points = HomePoints + AwayPoints WHERE teamID = $awayTeam";
+
+            $conn->query($query);
+            $conn->query($query2);
+            $conn->query($sql);
+
+            header("Location: ../index.php");
+            exit;  
+
+        }
     }
+
+    
+    
 }
 
 $conn->close();

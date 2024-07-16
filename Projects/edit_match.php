@@ -29,124 +29,39 @@ $row = $result->fetch_assoc();
              <div>
               <label>Week:</label>
               <input name="identifier" type="hidden" value="<?= $_GET['id']; ?>" />
-              <input min="1" required name="Week" type="number" value="<?=$row['week']; ?>"/>
+              <input readonly min="1"  name="Week" type="number" value="<?=$row['week']; ?>"/>
               </div>
  
               <div>
               <label>Home Team:</label>
-             <select name="Home" required>
-             <?php
+             <input name='Home' readonly value="<?= $row['HomeTeamID']; ?>"/>
              
-            
- 
-            
-             $sql = "SELECT * FROM teams";
-             $result = $conn->query($sql);
-
-             $statement = "SELECT 
-             team1.teamID as team_home_id,
-             team2.teamID as team_away_id
-             FROM matches
-             INNER join teams team1
-             on matches.HomeTeamID = team1.teamID
-             INNER join teams team2
-             on matches.AwayTeamID = team2.teamID
-             WHERE matchID = $id;";
-             
-             if (!$result) {
-                 die("Error fetching teams: " . $conn->error);
-             }
-  
-             $team = $conn->query($statement);
-             $teamHome = $team->fetch_assoc();
-                           
-             
-                 while($row = $result->fetch_assoc()) {
-                     $teamID = $row["teamID"];
-                     $TeamName = $row["TeamName"];
-
-                     if($teamHome['team_home_id'] === $teamID)
-                     echo "<option selected value='$teamID'>$TeamName</option>";
-
-                     else
-                     echo "<option value='$teamID'>$TeamName</option>";
-                 }
-             
-
-             
-             
-             ?>
-             </select>
               </div>
  
               <div>
               <label>Away Team:</label>
-         <select name="Away" required>
-             <?php
-
-             $query = "SELECT *,team1.TeamName as team_home, team2.TeamName as team_away 
-             FROM matches
-             JOIN teams as team1
-             ON team1.teamID = matches.HomeTeamID
-             join teams as team2
-             ON team2.teamID = matches.AwayTeamID
-             where matchID = $id;";
-
-             
-             if ($conn->connect_error) {
-                 die("Connection failed: " . $conn->connect_error);
-             }
-
-             $sql = "SELECT * FROM teams";
-             $result = $conn->query($sql);
- 
-    
-             if (!$result) {
-                 die("Error fetching teams: " . $conn->error);
-             }
- 
- 
-             
-                 while($row = $result->fetch_assoc()) {
-                     $teamID = $row["teamID"];
-                     $TeamName = $row["TeamName"];
-                    
-                     if($teamHome['team_away_id'] === $teamID)
-                     echo "<option selected value='$teamID'>$TeamName</option>";
-
-                     else
-                     echo "<option value='$teamID'>$TeamName</option>";
-                 }
-
+         <input name='Away' readonly value="<?= $row['AwayTeamID']; ?>"/>
             
-             
-             $result = $conn->query($query);
-
-             $record = $result->fetch_assoc();
-
-             $conn->close();
-             ?>
-             </select>
               </div>
               
               <div>
               <label>Home Score:</label>
-              <input min="0" required name="Home_score" type="number" placeholder="Score" value="<?=$record['HomeScore']; ?>"/>
+              <input min="0" required name="Home_score" type="number" placeholder="Score" value="<?=$row['HomeScore']; ?>"/>
               </div>
               
               <div>
               <label>Away Score:</label>
-              <input min="0" required name="Away_score" type="number" placeholder="Score" value="<?=$record['AwayScore']; ?>"/>
+              <input min="0" required name="Away_score" type="number" placeholder="Score" value="<?=$row['AwayScore']; ?>"/>
               </div>
               
               <div>
               <label>Match Date:</label>
-              <input required name="Match_date" type="date" value="<?=$record['matchDate']; ?>"/>
+              <input required name="Match_date" type="date" value="<?=$row['matchDate']; ?>"/>
               </div>
               
               <div>
               <label>Match Time:</label>
-              <input required name="Match_time" type="time" value="<?=$record['matchTime']; ?>"/>
+              <input required name="Match_time" type="time" value="<?=$row['matchTime']; ?>"/>
               </div> 
              
               

@@ -16,9 +16,14 @@ require_once 'PHP_data/config.php';
 
 $id = $_GET["id"];
  
-$sql = "SELECT * FROM matches WHERE matchID = '$id'";
+$sql = "SELECT * , team1.TeamName as Home_Team, team2.TeamName as Away_Team
+FROM matches 
+JOIN teams team1 ON matches.HomeTeamID = team1.teamID
+JOIN teams team2 ON matches.AwayTeamID = team2.teamID
+WHERE matchID = $id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+
 ?>
 
 
@@ -29,19 +34,20 @@ $row = $result->fetch_assoc();
              <div>
               <label>Week:</label>
               <input name="identifier" type="hidden" value="<?= $_GET['id']; ?>" />
-              <input readonly min="1"  name="Week" type="number" value="<?=$row['week']; ?>"/>
+              <input disabled min="1"  name="Week" type="number" value="<?=$row['week']; ?>"/>
               </div>
  
               <div>
               <label>Home Team:</label>
-             <input name='Home' readonly value="<?= $row['HomeTeamID']; ?>"/>
+              <input disabled value="<?= $row['Home_Team']; ?>"/>
+             <input name='Home' type="hidden" readonly value="<?= $row['HomeTeamID']; ?>"/>
              
               </div>
  
               <div>
               <label>Away Team:</label>
-         <input name='Away' readonly value="<?= $row['AwayTeamID']; ?>"/>
-            
+              <input disabled value="<?= $row['Away_Team']; ?>"/>
+              <input name='Away' type="hidden" readonly value="<?= $row['AwayTeamID']; ?>"/>
               </div>
               
               <div>

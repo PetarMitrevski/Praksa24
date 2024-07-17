@@ -36,7 +36,7 @@ else{
     $losses = htmlspecialchars($_POST["Losses"]);
 
     $sql = "UPDATE teams 
-    SET TeamName = '$team', Wins = '$wins', Draws = '$draws', Losses = '$losses', Points = Wins * 3 + Draws
+    SET TeamName = '$team', Wins = $wins, Draws = $draws, Losses = $losses, Points = Wins * 3 + Draws
     WHERE teamID = '$id'  
     ";
 

@@ -31,12 +31,15 @@ else{
       
     $id = htmlspecialchars($_POST['id']);
     $team = htmlspecialchars($_POST["Team"]);
-    $wins = htmlspecialchars($_POST["Wins"]);
-    $draws = htmlspecialchars($_POST["Draws"]);
-    $losses = htmlspecialchars($_POST["Losses"]);
+    $homeWins = htmlspecialchars($_POST["Home_Wins"]);
+    $awayWins = htmlspecialchars($_POST["Away_Wins"]);
+    $homeDraws = htmlspecialchars($_POST["Home_Draws"]);
+    $awayDraws = htmlspecialchars($_POST["Away_Draws"]);
+    $homeLosses = htmlspecialchars($_POST["Home_Losses"]);
+    $awayLosses = htmlspecialchars($_POST["Away_Losses"]);
 
     $sql = "UPDATE teams 
-    SET TeamName = '$team', Wins = $wins, Draws = $draws, Losses = $losses, Points = Wins * 3 + Draws
+    SET TeamName = '$team', HomeWins = $homeWins, AwayWins = $awayWins, HomeDraws = $homeDraws, AwayDraws = $awayDraws, HomeLosses = $homeLosses, AwayLosses = $awayLosses, Wins = $homeWins + $awayWins, Draws = $homeDraws + $awayDraws, Losses = $homeLosses + $awayLosses, HomePoints = 3 * HomeWins + HomeDraws, AwayPoints = 3 * AwayWins + AwayDraws, Points = HomePoints + AwayPoints 
     WHERE teamID = '$id'  
     ";
 

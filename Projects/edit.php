@@ -12,7 +12,6 @@
 
 <?php
 require_once 'views/navigation.php';
-
 require_once 'PHP_data/config.php';
 
 $id = $_GET["id"];
@@ -36,18 +35,28 @@ $row = $result->fetch_assoc();
              </div>
 
              <div>
-             <label  for="Wins">Wins</label>
-             <input min="0" required id="Wins" name="Wins" type="number" placeholder="Wins" value="<?= $row['Wins']; ?>"/>
+             <label>Home Wins</label>
+             <input min="0" required name="Home_Wins" type="number" placeholder="Home Wins" value="<?= $row['HomeWins']; ?>"/>
+             <br>
+             <label>Away Wins</label>
+             <input min="0" required name="Away_Wins" type="number" placeholder="Away Wins" value="<?= $row['AwayWins']; ?>"/>
              </div>
 
+             
              <div>
-             <label>Draws</label>
-             <input min="0" required id="Draws" name="Draws" type="number" placeholder="Draws" value="<?= $row['Draws']; ?>"/>
+             <label>Home Draws</label>
+             <input min="0" required name="Home_Draws" type="number" placeholder="Home Draws" value="<?= $row['HomeDraws']; ?>"/>
+             <br>
+             <label>Away Draws</label>
+             <input min="0" required name="Away_Draws" type="number" placeholder="Away Draws" value="<?= $row['AwayDraws']; ?>"/>
              </div>
              
              <div>
-             <label>Losses</label>
-             <input min="0" required name="Losses" id="Losses" type="number" placeholder="Losses" value="<?= $row['Losses']; ?>"/>
+             <label>Home Losses</label>
+             <input min="0" required name="Home_Losses"  type="number" placeholder="Home Losses" value="<?= $row['HomeLosses']; ?>"/>
+             <br>
+             <label>Home Losses</label>
+             <input min="0" required name="Away_Losses"  type="number" placeholder="Away Losses" value="<?= $row['AwayLosses']; ?>"/>
              </div> 
             
              

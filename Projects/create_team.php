@@ -15,18 +15,27 @@ require_once 'views/navigation.php';
              </div>
 
              <div>
-             <label  for="Wins">Wins:</label>
-             <input min="0" required id="Wins" name="Wins" type="number" placeholder="Wins"/>
+             <label>Home Wins:</label>
+             <input min="0" required name="Home_Wins" type="number" placeholder="Home Wins"/>
+             <br>
+             <label>Away Wins:</label>
+             <input min="0" required name="Away_Wins" type="number" placeholder="Away Wins"/>
              </div>
 
              <div>
-             <label>Draws:</label>
-             <input min="0" required id="Draws" name="Draws" type="number" placeholder="Draws"/>
+             <label>Home Draws:</label>
+             <input min="0" required name="Home_Draws" type="number" placeholder="Home Draws"/>
+             <br>
+             <label>Away Draws:</label>
+             <input min="0" required name="Away_Draws" type="number" placeholder="Away Draws"/>
              </div>
              
              <div>
-             <label>Losses:</label>
-             <input min="0" required name="Losses" id="Losses" type="number" placeholder="Losses"/>
+             <label>Home Losses:</label>
+             <input min="0" required name="Home_Losses" type="number" placeholder="Home Losses"/>
+             <br>
+             <label>Away Losses:</label>
+             <input min="0" required name="Away_Losses" type="number" placeholder="Away Losses"/>
              </div> 
             
              

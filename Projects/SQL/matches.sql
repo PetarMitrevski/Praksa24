@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 02:58 PM
+-- Generation Time: Jul 18, 2024 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,8 +43,8 @@ CREATE TABLE `matches` (
 --
 
 INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate`, `matchTime`, `HomeScore`, `AwayScore`) VALUES
-(261, 2, 5, 1, '2024-07-23', '17:31:00', 1, 2),
-(263, 5, 6, 2, '2024-07-11', '18:35:00', 1, 1);
+(341, 1, 5, 1, '2024-07-30', '05:26:00', 2, 1),
+(343, 5, 1, 2, '2024-07-30', '16:42:00', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -54,7 +54,9 @@ INSERT INTO `matches` (`matchID`, `HomeTeamID`, `AwayTeamID`, `week`, `matchDate
 -- Indexes for table `matches`
 --
 ALTER TABLE `matches`
-  ADD PRIMARY KEY (`matchID`);
+  ADD PRIMARY KEY (`matchID`),
+  ADD KEY `fk_AwayTeamID` (`AwayTeamID`),
+  ADD KEY `fk_HomeTeamID` (`HomeTeamID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -64,7 +66,7 @@ ALTER TABLE `matches`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+  MODIFY `matchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 
 --
 -- Constraints for dumped tables
@@ -75,9 +77,7 @@ ALTER TABLE `matches`
 --
 ALTER TABLE `matches`
   ADD CONSTRAINT `fk_AwayTeamID` FOREIGN KEY (`AwayTeamID`) REFERENCES `teams` (`teamID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_HomeTeamID` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `matches_ibfk_1` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`),
-  ADD CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`AwayTeamID`) REFERENCES `teams` (`teamID`);
+  ADD CONSTRAINT `fk_HomeTeamID` FOREIGN KEY (`HomeTeamID`) REFERENCES `teams` (`teamID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -16,6 +16,7 @@ echo "
   <tr>
  <th>#</th>
  <th>TEAM</th>
+ <th>MATCHES PLAYED</th>
  <th>WINS</th>
  <th>DRAWS</th>
  <th>LOSES</th>
@@ -32,7 +33,10 @@ while($row = $result->fetch_assoc()){
  $number.
 </td>
 <td>
-  $row[TeamName]
+ $row[TeamName]
+</td>
+<td>
+ $row[MatchesPlayedAway]
 </td>
 <td>
  $row[AwayWins]

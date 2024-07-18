@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         else if($oldMatch['HomeScore'] < $oldMatch['AwayScore']){
 
             $query = "UPDATE teams SET HomeGoals = HomeGoals - $oldMatch[HomeScore] + $homeScore_new, HomeDraws = HomeDraws + 1, HomeLosses = GREATEST(HomeLosses - 1, 0), HomePoints = 3 * HomeWins + HomeDraws, Goals = HomeGoals + AwayGoals, Draws = HomeDraws + AwayDraws, Losses = HomeLosses + AwayLosses, Points = HomePoints + AwayPoints WHERE teamID = $homeTeam";
-            $query2 = "UPDATE teams SET AwayGoals = AwayGoals - $oldMatch[AwayScore] + $awayScore_new, AwayDraws = AwayDraws + 1, AwayWins = Awaywins + 1, AwayPoints = 3 * AwayWins + AwayDraws, Goals = HomeGoals + AwayGoals, Draws = HomeDraws + AwayDraws, Wins = HomeWins + AwayWins, Points = HomePoints + AwayPoints WHERE teamID = $awayTeam ";
+            $query2 = "UPDATE teams SET AwayGoals = AwayGoals - $oldMatch[AwayScore] + $awayScore_new, AwayDraws = AwayDraws + 1, AwayWins = GREATEST(Awaywins - 1, 0), AwayPoints = 3 * AwayWins + AwayDraws, Goals = HomeGoals + AwayGoals, Draws = HomeDraws + AwayDraws, Wins = HomeWins + AwayWins, Points = HomePoints + AwayPoints WHERE teamID = $awayTeam ";
 
             $conn->query($query);
             $conn->query($query2);

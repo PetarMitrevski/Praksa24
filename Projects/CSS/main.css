@@ -16,9 +16,22 @@
     justify-content: center;
 }
 
-.matches__records{
+article div{
     display: flex;
+    column-gap: 0.2rem;
 }
+
+article div button{
+    width: 3.5rem;
+    font-size: 0.8rem;
+    height: 1.5rem;
+    text-align: center;
+}
+
+input, select, textarea{
+    border: solid 0.7px black;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -26,7 +39,7 @@ body{
     gap: 3rem;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
     footer {
         background-color: #2e093d;
         color: #fff;
@@ -55,11 +68,11 @@ body{
         padding: 0.3rem;
         color: #2e093d;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .clubs__table-overall tr, .clubs__table-home tr, .clubs__table-away tr, .clubs__table-scorers tr{
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .clubs__table-overall img, .clubs__table-home img, .clubs__table-away img, .clubs__table-scorers img{
@@ -71,7 +84,10 @@ body{
         font-size: 1.2rem;
         gap: 1rem;
         font-weight: 600;
+        justify-content: end;
     }
+
+    
 
 }
 
@@ -79,9 +95,7 @@ body{
 
 @media only screen and (max-width: 767px) {
     
-    body {
-        padding: 0;
-    }
+    
 
     .clubs{
         flex-direction: column;
@@ -92,26 +106,43 @@ body{
         padding: 0.3rem;
         color: #2e093d;
         text-align: center;
-        font-size: 0.46rem;
-    }
-
-    .clubs__table-overall tr, .clubs__table-away tr, .clubs__table-home tr , .clubs__table-scorers tr{
         font-size: 0.6rem;
     }
 
+    .clubs__table-overall tr, .clubs__table-away tr, .clubs__table-home tr , .clubs__table-scorers tr{
+        font-size: 0.5rem;
+    }
+
     .clubs .btn-group button{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 
 
     .navigation ul{
         list-style-type: none;
-        font-size: 0.8rem;
+        font-size: 0.52rem;
         gap: 1rem;
-        font-weight: 600;
+        font-weight: 500;
     }
 
     footer{
         font-size: 0.8rem;
     }
+
+    article div{
+        font-size: 0.7rem;
+        column-gap: 0.5rem;
+    }
+
+    article div button{
+        font-size: 0.7rem;
+        height: 1.2rem;
+        width: 3rem;
+    }
+
+    input, select, label{
+        font-size: 0.5rem;
+    }
+
+
 }

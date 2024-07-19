@@ -32,14 +32,14 @@ require_once 'config.php';
  
   echo "
  <article>
- <h4>Week $i</h4>
+ <h5>Week $i</h5>
   ";
    while($match = $result->fetch_assoc()){
          
      echo "
      
-     <div style='display:flex; column-gap:1rem; margin:0.5rem;'>
-     <h5>$match[matchDate] | $match[matchStart] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </h5>
+     <div>
+     <p>$match[matchDate] | $match[matchStart] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </p>
      <button><a href='edit_match.php?id=$match[matchID]'>Edit</a></button>
      <button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> 
      </div>

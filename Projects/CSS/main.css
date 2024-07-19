@@ -122,34 +122,34 @@ body{
     
 
     .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-scorers th{
-        padding: 0.3rem;
+        padding: 0.2rem;
         color: #2e093d;
         text-align: center;
         font-size: 0.6rem;
     }
 
     .clubs__table-overall tr, .clubs__table-away tr, .clubs__table-home tr , .clubs__table-scorers tr{
-        font-size: 0.5rem;
+        font-size: 0.6rem;
     }
 
     .clubs .btn-group button{
-        font-size: 0.6rem;
+        font-size: 0.9rem;
     }
 
 
     .navigation ul{
         list-style-type: none;
-        font-size: 0.52rem;
+        font-size: 0.72rem;
         gap: 1rem;
         font-weight: 500;
     }
 
     footer{
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     article div{
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         column-gap: 0.5rem;
     }
 
@@ -160,7 +160,7 @@ body{
     }
 
     input, select, label, textarea{
-        font-size: 0.5rem;
+        font-size: 1rem;
     }
 
 

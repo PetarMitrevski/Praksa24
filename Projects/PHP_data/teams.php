@@ -15,13 +15,13 @@ die("Invalid query");
 echo "
   <tr>
  <th>#</th>
- <th>TEAM</th>
- <th>MATCHES PLAYED</th>
- <th>WINS</th>
- <th>DRAWS</th>
- <th>LOSES</th>
- <th>POINTS</th>
- <th>GOALS</th>
+ <th>TN</th>
+ <th>MP</th>
+ <th>W</th>
+ <th>D</th>
+ <th>L</th>
+ <th>P</th>
+ <th>G</th>
  </tr>
 ";
 

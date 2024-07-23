@@ -43,6 +43,10 @@ body {
   font-size: 1rem;
 }
 
+.center .inputbox input:focus{
+    border: 2px solid #2e093d;
+    box-shadow: 5px 3px 10px #2e093d;
+}
 
 .center span a {
     margin-right: 3rem;
@@ -61,4 +65,5 @@ body {
 .center [type="submit"]:hover {
   background: #2e093d;
   color: white;
+  box-shadow: 5px 7px 10px #2e093d;
 }

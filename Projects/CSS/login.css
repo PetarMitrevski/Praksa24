@@ -42,9 +42,7 @@ body {
   padding: 10px;
   font-size: 1rem;
 }
-.center .inputbox:last-child {
-  margin-bottom: 0;
-}
+
 
 .center span a {
     margin-right: 3rem;

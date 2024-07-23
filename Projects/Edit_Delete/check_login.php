@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -12,11 +13,17 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $sql = "SELECT * FROM users WHERE UserName = ? AND Pass = ?";
 
-    if($password !== $repeated_password)
+    if($password !== $repeated_password){
     header("Location: ../index.php?error=passwords_dont_match");
+    exit;
+     
+}
+    
 
-    else{
+else{
         
+        $_SESSION['User'] = $username;
+
         $statement = $conn->prepare($sql);
         $statement->bind_param("ss", $username, $password);
         $statement->execute();
@@ -25,8 +32,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         
         if($result)
-        header("Location: ../home.php?user=$result[UserName]");
-        
+        header("Location: ../home.php");
+    
        
     }
 }

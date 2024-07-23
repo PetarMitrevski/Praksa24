@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
 
         }
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
         }
 
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
 
         }
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
 
         }
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
         }
 
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
 
         }
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
            $conn->query($sql);
 
           
-           header("Location: ../index.php");
+           header("Location: ../home.php");
            exit;  
 
         }
@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($sql);
 
             
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
 
         }
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $conn->query($query2);
             $conn->query($sql);
 
-            header("Location: ../index.php");
+            header("Location: ../home.php");
             exit;  
         }
     }

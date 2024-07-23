@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resultMatch = $conn->query($checkMatch);
     if ($resultHome->num_rows > 0 || $resultAway->num_rows > 0 || $resultMatch->num_rows > 0 ) {
         // Redirect or handle duplicate match scenario (if necessary)
-        header("Location: ../index.php?error=duplicate_match");
+        header("Location: ../home.php?error=duplicate_match");
         exit;
     }
 
@@ -81,15 +81,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the match insertion statement
         $conn->query($statement);
-        header("Location: ../index.php");
+        header("Location: ../home.php");
         exit;
     } else {
         // Handle if home and away team are the same
-        header("Location: ../index.php?error=same_teams");
+        header("Location: ../home.php?error=same_teams");
         exit;
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: ../home.php");
     exit;
 }
 

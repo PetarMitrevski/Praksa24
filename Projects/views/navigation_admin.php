@@ -41,7 +41,7 @@
             
 
             <li>
-               <a href="index.php">
+               <a href="home.php">
               Home
               </a>
             </li>
@@ -61,9 +61,9 @@
 
             
             <li>
-               <a href="contact.php">
-                Contact
-               </a>
+                <a href="Edit_Delete/logout.php">
+                Log out
+                </a>
             </li>
 
             
@@ -73,6 +73,3 @@
         </ul>
         </div>
       </nav>
-
-
-       

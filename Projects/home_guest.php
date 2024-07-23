@@ -1,25 +1,19 @@
-
 <?php
+
 session_start();
 
-
-if(!isset($_SESSION['User'])){
-     header("Location: index.php");
-     exit;
-}
-
-
+$_SESSION['User'] = "Guest";
 
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-require_once 'views/navigation_admin.php';
+require_once 'views/navigation_guest.php';
 require_once 'PHP_data/config.php';
 
 ?>
 
-  
+
 <section class="clubs">
 
 
@@ -33,7 +27,7 @@ require_once 'PHP_data/config.php';
        
         <?php
            
-         include "PHP_data/teams.php";
+         include "PHP_data/teams_guestmode.php";
           
         ?>
         </table>
@@ -59,7 +53,7 @@ require_once 'PHP_data/config.php';
 
        
         <?php
-        include "PHP_data/matches.php";      
+        include "PHP_data/matches_guestmode.php";      
         ?>
 
         <div style="text-align:center">

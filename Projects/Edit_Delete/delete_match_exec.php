@@ -59,7 +59,7 @@ $stmt2->execute();
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
-    header("Location: ../index.php");
+    header("Location: ../home.php");
     exit;
 } else {
     echo "Invalid query";

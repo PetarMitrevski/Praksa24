@@ -1,6 +1,6 @@
 <?php
-if(file_exists('views/navigation.php'))
-require_once 'views/navigation.php';
+if(file_exists('views/navigation_guest.php'))
+require_once 'views/navigation_guest.php';
 ?>
 
 

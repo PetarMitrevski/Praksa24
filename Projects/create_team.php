@@ -1,7 +1,7 @@
 
 <?php
-if(file_exists('views/navigation.php'))
-require_once 'views/navigation.php';
+if(file_exists('views/navigation_admin.php'))
+require_once 'views/navigation_admin.php';
 ?>
 
 

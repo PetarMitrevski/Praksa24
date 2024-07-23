@@ -11,7 +11,7 @@
 <body>
 
 <?php
-require_once 'views/navigation.php';
+require_once 'views/navigation_admin.php';
 require_once 'PHP_data/config.php';
 
 $id = $_GET["id"];

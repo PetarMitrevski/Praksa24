@@ -13,15 +13,36 @@
 
 <?php
 
-$errormsg = (isset($_GET['error'])) ? "Passwords must be the same" : "";
+if (!isset($_GET['error'])) {
+  
+  $error = " "; 
+} 
+
+else {
+
+  switch($_GET['error']){
+
+    case 'passwords_dont_match':
+      $error = "Passwords don't match";
+      break;
+    
+    case 'invalid_username_or_password':
+      $error = "Invalid username or password";
+      break;
+    
+  }
+
+
+}
 
 ?>
 
-
 <div class="center">
-  <h1>Login</h1>
+  <h1>Log in</h1>
   <form action="Edit_Delete/check_login.php" method="post">
     
+  <p class="error"><?= $error ?></p>
+
   <div class="inputbox">
       <input placeholder="Username" name="username" type="text" required>
     </div>
@@ -34,13 +55,16 @@ $errormsg = (isset($_GET['error'])) ? "Passwords must be the same" : "";
       <input placeholder="Repeat Password" name="password_repeat" type="password" required>
     </div>
 
+    
+    
     <div class="inputbox">
       <input type="submit" value="Submit">
     </div>
 
     <div>
+      <p>Don't have an account you can choose to:</p>
       <span><a href="home_guest.php">Guest mode</a></span>
-      <span><a>Sign up</a></span>     
+      <span><a href="signup.php">Sign up</a></span>     
     </div>
 
   </form>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     require_once "../PHP_data/config.php";
@@ -22,7 +21,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
 else{
         
-        $_SESSION['User'] = $username;
 
         $statement = $conn->prepare($sql);
         $statement->bind_param("ss", $username, $password);
@@ -31,10 +29,17 @@ else{
         $result = $response->fetch_assoc();
 
         
-        if($result)
-        header("Location: ../home.php");
-    
-       
+        if($result){
+        $_SESSION['status'] = "Active";
+        header("Location: ../home.php?User=$username");
+        exit;    
+        }
+        
+        else{
+        header("Location: ../index.php?error=invalid_username_or_password");
+        exit;    
+    }
+
     }
 }
 

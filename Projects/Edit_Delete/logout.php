@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-session_unset();
+
 
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
@@ -12,6 +12,7 @@ if (ini_get("session.use_cookies")) {
 }
 
 session_destroy();
+session_unset();
 
 header("Location: ../index.php");
 exit();

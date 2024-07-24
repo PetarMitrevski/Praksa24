@@ -65,14 +65,10 @@ rows[3].style.borderBottom = "2px solid lime"
 rows[6].style.borderBottom = "2px solid lime"
 rows[18].style.borderTop = "2px solid red"
 
-//handle history
-if (window.history && window.history.pushState) {
-    window.history.pushState('forward', null, '');
-    window.onpopstate = function() {
-        window.history.pushState('forward', null, '');
-        window.location.reload();
-    };
-}
+history.pushState(null, null, null);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, null);
+});
 
 
 

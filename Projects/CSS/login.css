@@ -25,6 +25,11 @@ body {
   font-weight: bold;
   padding-left: 0.1rem;
 }
+
+.center .error{
+  color: red;
+}
+
 .center .inputbox {
   position: relative;
   width: 300px;
@@ -53,6 +58,7 @@ body {
     cursor: pointer;
     text-decoration: none;
     color: black;
+    font-size: 1.2rem;
 }
 
 .center .inputbox [type="submit"] {

@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $repeated_password = htmlspecialchars($_POST['password_repeat']);
 
 
-    $sql = "SELECT * FROM users WHERE UserName = ? AND Pass = ?";
+    $sql = "SELECT * FROM users WHERE UserName = ?";
 
     if($password !== $repeated_password){
     header("Location: ../index.php?error=passwords_dont_match");
@@ -23,13 +23,13 @@ else{
         
 
         $statement = $conn->prepare($sql);
-        $statement->bind_param("ss", $username, $password);
+        $statement->bind_param("s", $username);
         $statement->execute();
         $response = $statement->get_result();
         $result = $response->fetch_assoc();
 
         
-        if($result){
+        if($result && password_verify($password, $result['Pass'])){
         $_SESSION['status'] = "Active";
         header("Location: ../home.php?User=$username");
         exit;    

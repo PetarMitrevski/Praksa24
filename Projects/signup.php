@@ -13,6 +13,36 @@
 
 <?php
 
+if (!isset($_GET['error'])) {
+  
+  $error = " "; 
+} 
+
+else {
+
+  switch($_GET['error']){
+
+    case 'username_exists':
+      $error = "This username is already taken";
+      break;
+    
+    case 'username_too_short':
+      $error = "Username must be at least 5 characters long";
+      break;
+    
+    case 'must_contain_uppercase_or_lowercase':
+      $error = "Password must contain at least 1 uppercase or 1 lowercase letter";
+      break;
+    
+    case 'password_too_short':
+      $error = "Password must be at least 8 characters long";
+      break;
+    
+  }
+
+
+}
+
 
 ?>
 
@@ -20,6 +50,8 @@
   <h1>Sign up</h1>
   <form action="Edit_Delete/check_signup.php" method="post">
     
+  <p class="error"><?= $error ?></p>
+
   <div class="inputbox">
       <input placeholder="Username" name="username" type="text" required>
     </div>

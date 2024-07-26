@@ -12,6 +12,7 @@
 <body>
 
 <?php
+$error = ' ';
 
 if (!isset($_GET['error'])) {
   
@@ -22,9 +23,6 @@ else {
 
   switch($_GET['error']){
 
-    case 'passwords_dont_match':
-      $error = "Passwords don't match";
-      break;
     
     case 'invalid_username_or_password':
       $error = "Invalid username or password";
@@ -51,9 +49,7 @@ else {
       <input placeholder="Password" name="password" type="password" required>
     </div>
 
-    <div class="inputbox">
-      <input placeholder="Repeat Password" name="password_repeat" type="password" required>
-    </div>
+    
 
     
     

@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
-    
+    $repeated_password = htmlspecialchars($_POST['password_repeat']);
     
     $query = "SELECT COUNT(*) AS num FROM users WHERE username = '$username';";
 
@@ -28,8 +28,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     else {
+        
+        if($password !== $repeated_password){
+        header("Location: ../signup.php?error=passwords_dont_match");
+        exit;
+        }
 
-        if(!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password)){
+        else if(!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password)){
         header("Location: ../signup.php?error=must_contain_uppercase_or_lowercase");
         exit;
         }

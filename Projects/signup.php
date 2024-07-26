@@ -30,6 +30,10 @@ else {
       $error = "Username must be at least 5 characters long";
       break;
     
+    case 'passwords_dont_match':
+      $error = "Passwords don't match";
+      break;
+    
     case 'must_contain_uppercase_or_lowercase':
       $error = "Password must contain at least 1 uppercase or 1 lowercase letter";
       break;
@@ -58,6 +62,10 @@ else {
 
     <div class="inputbox">
       <input placeholder="Password" name="password" type="password" required>
+    </div>
+
+    <div class="inputbox">
+      <input placeholder="Repeat Password" name="password_repeat" type="password" required>
     </div>
 
     

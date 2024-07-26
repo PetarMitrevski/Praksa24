@@ -41,6 +41,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         else {
 
+          $username = preg_replace('/\s+/','',$username);
+
           $query = "INSERT INTO users(UserName,Pass) VALUE('$username','$hashedPassword')";
           $conn->query($query);
           header("Location: ../signup.php");

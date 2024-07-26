@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $repeated_password = htmlspecialchars($_POST['password_repeat']);
 
 
-    $sql = "SELECT * FROM users WHERE UserName = ?";
+    $sql = "SELECT * FROM users WHERE UserName = ? LIMIT 1";
 
     if($password !== $repeated_password){
     header("Location: ../index.php?error=passwords_dont_match");

@@ -65,10 +65,6 @@ rows[3].style.borderBottom = "2px solid lime"
 rows[6].style.borderBottom = "2px solid lime"
 rows[18].style.borderTop = "2px solid red"
 
-history.pushState(null, null, null);
-window.addEventListener('popstate', function () {
-    history.pushState(null, null, null);
-});
 
 
 

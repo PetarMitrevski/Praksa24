@@ -12,8 +12,10 @@ $parsed_url = parse_url($_SERVER['REQUEST_URI']);
 
 
 
-if(!array_key_exists("status", $_SESSION) && !in_array($_GET['User'], $results) && !array_key_exists("query", $parsed_url)){
+if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
      
+     header("Location: index.php");
+
      if (ini_get("session.use_cookies")) {
           $params = session_get_cookie_params();
           setcookie(session_name(), '', time() - 42000,
@@ -21,19 +23,17 @@ if(!array_key_exists("status", $_SESSION) && !in_array($_GET['User'], $results) 
               $params["secure"], $params["httponly"]
           );
       }
+      
+      session_destroy();
+      session_unset();
 
-     session_unset();
-     session_destroy();
-     header("Location: index.php");
-     exit;
+      exit;    
+
 }
 
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Pragma: no-cache");
-header("Expires: 0");
+
 
 require_once 'views/navigation_admin.php';
-echo $_GET['User'];
 ?>
 
   

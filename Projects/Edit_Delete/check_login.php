@@ -22,7 +22,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         
         if($result && password_verify($password, $result['Pass'])){
         $_SESSION['status'] = "Active";
-        header("Location: ../home.php?User=$username");
+        $_SESSION['User'] = $username;
+        header("Location: ../home.php");
         exit;    
         }
         

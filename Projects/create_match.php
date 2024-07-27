@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if(file_exists('views/navigation_admin.php'))
-require_once 'views/navigation_admin.php';
-
-
 if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
      
     header("Location: index.php");
@@ -23,6 +19,10 @@ if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
      exit;    
  
  }
+
+if(file_exists('views/navigation_admin.php'))
+require_once 'views/navigation_admin.php';
+
 ?>
 
 

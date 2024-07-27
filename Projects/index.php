@@ -12,6 +12,7 @@
 <body>
 
 <?php
+
 $error = ' ';
 
 if (!isset($_GET['error'])) {

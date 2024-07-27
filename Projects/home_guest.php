@@ -1,14 +1,6 @@
 <?php
-session_start();
-
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Pragma: no-cache");
-header("Expires: 0");
-
 require_once 'views/navigation_guest.php';
 require_once 'PHP_data/config.php';
-
-
 
 ?>
 
@@ -48,12 +40,19 @@ require_once 'PHP_data/config.php';
           ?>
 
      </table>
+
+     <table class="clubs__table-overall">
+     
+     <?php
+        include "PHP_data/matches_guestmode.php";      
+        ?>
+     </table>
+
+
         </section>
 
        
-        <?php
-        include "PHP_data/matches_guestmode.php";      
-        ?>
+        
 
         <div style="text-align:center">
         <p> <span style="background: royalblue; color:transparent;">-</span> Champions league</p>

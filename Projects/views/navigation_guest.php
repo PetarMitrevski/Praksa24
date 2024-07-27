@@ -54,8 +54,8 @@
              
 
             <li>
-                <a href="Edit_Delete/logout.php">
-                Exit
+                <a href="index.php">
+                Log In
                 </a>
             </li>
 

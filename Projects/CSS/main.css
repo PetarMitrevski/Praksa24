@@ -8,24 +8,8 @@
     box-sizing: border-box;
 }
 
-.matches{
-    display: flex;
-    flex-direction: column;
-    gap: 1.3rem;
-    align-items: center;
-}
 
-article div{
-    display: flex;
-    column-gap: 0.2rem;
-}
 
-article div button{
-    width: 5rem;
-    font-size: 0.8rem;
-    height: 1.5rem;
-    text-align: center;
-}
 
 input, select, textarea{
     border: solid 0.7px black;
@@ -63,15 +47,15 @@ body{
     }
     
 
-    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-away th ,.clubs__table-scorers th{
+    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-away th ,.clubs__table-scorers th, .clubs__table-matches th{
         padding: 0.3rem;
         color: #2e093d;
         text-align: center;
         font-size: 1.1rem;
     }
 
-    .clubs__table-overall tr, .clubs__table-home tr, .clubs__table-away tr, .clubs__table-scorers tr{
-        font-size: 1.2rem;
+    .clubs__table-overall td, .clubs__table-home td, .clubs__table-away td, .clubs__table-scorers td, .clubs__table-matches td{
+        font-size: 1rem;
     }
 
     .clubs__table-overall img, .clubs__table-home img, .clubs__table-away img, .clubs__table-scorers img{
@@ -91,19 +75,6 @@ body{
     }
 
 
-    article div{
-        font-size: 1.2rem;
-        column-gap: 0.6rem;
-    }
-
-    article div button{
-        width: 4rem;
-        font-size: 1.1rem;
-        height: 1.8rem;
-        text-align: center;
-    }
-
-
     input, select, label, textarea{
         font-size: 1.3rem;
     }
@@ -120,7 +91,7 @@ body{
     }
     
 
-    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-scorers th{
+    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-scorers th, .clubs__table-matches th{
         padding: 0.2rem;
         color: #2e093d;
         text-align: center;
@@ -128,12 +99,12 @@ body{
         letter-spacing: 2px;
     }
 
-    .clubs__table-overall tr, .clubs__table-away tr, .clubs__table-home tr , .clubs__table-scorers tr{
+    .clubs__table-overall td, .clubs__table-away td, .clubs__table-home td , .clubs__table-scorers td, .clubs__table-matches td{
         font-size: 0.8rem;
     }
 
     .clubs .btn-group button{
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
 
@@ -148,16 +119,6 @@ body{
         font-size: 1rem;
     }
 
-    article div{
-        font-size: 0.9rem;
-        column-gap: 0.5rem;
-    }
-
-    article div button{
-        font-size: 0.7rem;
-        height: 1.2rem;
-        width: 3rem;
-    }
 
     input, select, label, textarea{
         font-size: 0.9rem;

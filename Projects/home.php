@@ -72,12 +72,18 @@ require_once 'views/navigation_admin.php';
           ?>
 
      </table>
-        </section>
 
-       
-        <?php
+     <table class="clubs__table-overall">
+     
+     <?php
         include "PHP_data/matches.php";      
         ?>
+     </table>
+
+     </section>
+
+       
+        
 
         <div style="text-align:center">
         <p> <span style="background: royalblue; color:transparent;">-</span> Champions league</p>

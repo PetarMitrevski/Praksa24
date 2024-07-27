@@ -1,20 +1,8 @@
-<section class="matches">
 
 <?php
 
 require_once 'config.php';
 
- $sql = "SELECT MAX(week) AS weeks
- FROM matches";
- 
- $row = $conn->query($sql);
-
- $maxWeek = $row->fetch_assoc();
- $i = 1;
-
-
-
- while($maxWeek['weeks']>= $i){
 
     $query = "SELECT * ,
     team1.TeamName as team_home,
@@ -25,34 +13,44 @@ require_once 'config.php';
     on matches.HomeTeamID = team1.teamID
     INNER join teams team2
     on matches.AwayTeamID = team2.teamID
-    WHERE week = $i
-    ORDER BY matchDate ASC, matchTime ASC;";
+    ORDER BY week ASC ,matchDate ASC, matchTime ASC;";
   
   $result = $conn->query($query);
  
   echo "
- <article>
- <h5>Week $i</h5>
+
+ <tr>
+<th> H </th>
+<th> A </th>
+<th> W </th>
+<th> D </th>
+<th> T </th>
+<th> HS </th>
+<th> AS </th>
+
+ </tr>
+
   ";
    while($match = $result->fetch_assoc()){
          
      echo "
+      
+     <tr>
+     <td>$match[team_home]</td>
+     <td>$match[team_away]</td>
+     <td>$match[week]</td>
+     <td>$match[matchDate]</td>
+     <td>$match[matchStart]</td>
+     <td>$match[HomeScore]</td>
+     <td>$match[AwayScore]</td>
+     <td><button><a href='edit_match.php?id=$match[matchID]'>Edit</a></button></td>
+     <td><button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> </td>
      
-     <div>
-     <p>$match[matchDate] | $match[matchStart] | $match[team_home] - $match[team_away] $match[HomeScore]:$match[AwayScore]  </p>
-     <button><a href='edit_match.php?id=$match[matchID]'>Edit</a></button>
-     <button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> 
-     </div>
+     </tr>
+
 
      ";
      
    }
 
-  echo "</article>";
-  $i++;
- }
-
-  
 ?>
-
-</section>

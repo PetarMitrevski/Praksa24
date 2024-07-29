@@ -42,7 +42,7 @@ $week = 1;
 
      echo "
      <tr>
-     <th class='matches-weeks' colspan='5'>Week $week</th>
+     <th class='matches-weeks' colspan='7'>Week $week</th>
      </tr>
      ";
 
@@ -58,6 +58,8 @@ $week = 1;
      <td>$match[matchDate]</td>
      <td>$match[matchStart]</td>
      <td>$match[HomeScore]:$match[AwayScore]</td>
+     <td><button><a href='edit_match.php?id=$match[matchID]'>Edit</a></button></td>
+     <td><button><a href='Edit_Delete/delete_match_exec.php?id=$match[matchID]'>Delete</a></button> </td>
      </tr>
 
 

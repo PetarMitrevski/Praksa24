@@ -1,7 +1,29 @@
 <?php
 
 require_once 'config.php';
+$queryMaxWeek = "SELECT MAX(week) as 'maxWeek' FROM matches";
 
+$maxWeek = $conn->query($queryMaxWeek)->fetch_assoc()['maxWeek'];
+$week = 1;
+
+
+  
+  
+  echo "
+
+ <tr>
+<th> Home </th>
+<th> Away </th>
+<th> Date </th>
+<th> Time </th>
+<th> Result </th>
+
+ </tr>
+
+  ";
+
+   while($week <= $maxWeek){
+    
     $query = "SELECT * ,
     team1.TeamName as team_home,
     team2.TeamName as team_away,
@@ -11,42 +33,36 @@ require_once 'config.php';
     on matches.HomeTeamID = team1.teamID
     INNER join teams team2
     on matches.AwayTeamID = team2.teamID
+    WHERE week = $week
     ORDER BY week ASC ,matchDate ASC, matchTime ASC;";
-  
-  $result = $conn->query($query);
+     
+     $result = $conn->query($query);
 
-  echo "
+     echo "
+     <tr>
+     <th class='matches-weeks' colspan='5'>Week $week</th>
+     </tr>
+     ";
 
-  <tr>
- <th> H </th>
- <th> A </th>
- <th> W </th>
- <th> D </th>
- <th> T </th>
- <th> HS </th>
- <th> AS </th>
- 
-  </tr>
- 
-   ";
-  
    while($match = $result->fetch_assoc()){
          
-    echo "
-      
-    <tr>
-    <td>$match[team_home]</td>
-    <td>$match[team_away]</td>
-    <td>$match[week]</td>
-    <td>$match[matchDate]</td>
-    <td>$match[matchStart]</td>
-    <td>$match[HomeScore]</td>
-    <td>$match[AwayScore]</td>
-    </tr>
+    
+     
+     echo "
+
+     <tr>
+     <td>$match[team_home]</td>
+     <td>$match[team_away]</td>
+     <td>$match[matchDate]</td>
+     <td>$match[matchStart]</td>
+     <td>$match[HomeScore]:$match[AwayScore]</td>
+     </tr>
 
 
-    ";
+     ";
      
    }
+   $week++;
+  }
 
 

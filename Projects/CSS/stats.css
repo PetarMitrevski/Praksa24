@@ -42,11 +42,11 @@
     padding: 0.2rem;
     color: #2e093d;
     text-align: center;
-    border-top: 2px solid black;
+    border-top: 3px solid black;
 }
 
 .clubs__table-matches td{
-    border-top: 0.75px solid rgba(37, 37, 37, 0.5);
+    border-top: 0.75px solid rgba(121, 120, 120, 0.2);
     font-weight: 500;
     padding: 0.3rem;
     text-align: center;

@@ -18,18 +18,17 @@
 
 
 .clubs__table-overall th, .clubs__table-scorers th, .clubs__table-home th, .clubs__table-away th, .clubs__table-matches th{
-    padding: 0.6rem;
+    padding: 0.2rem;
     color: #2e093d;
     text-align: center;
 }
 
-.clubs__table-overall td, .clubs__table-scorers td, .clubs__table-home td, .clubs__table-away td, .clubs__table-matches td{
+.clubs__table-overall td, .clubs__table-scorers td, .clubs__table-home td, .clubs__table-away td{
     text-align: center;
     border-bottom: 0.75px solid black;
     border-top: 0.75px solid black;
-    border-right: 0.75px solid black;
     font-weight: 500;
-    padding: 1rem;
+    padding: 0.3rem;
 
 }
 
@@ -39,7 +38,19 @@
 }
 
 
+.matches-weeks{
+    padding: 0.2rem;
+    color: #2e093d;
+    text-align: center;
+    border-top: 2px solid black;
+}
 
+.clubs__table-matches td{
+    border-top: 0.75px solid rgba(37, 37, 37, 0.5);
+    font-weight: 500;
+    padding: 0.3rem;
+    text-align: center;
+}
 
 .dissappear{
     display: none;

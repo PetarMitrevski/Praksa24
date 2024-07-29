@@ -73,7 +73,7 @@ require_once 'views/navigation_admin.php';
 
      </table>
 
-     <table class="clubs__table-overall">
+     <table class="clubs__table-matches">
      
      <?php
         include "PHP_data/matches.php";      

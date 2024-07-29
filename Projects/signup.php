@@ -68,6 +68,14 @@ else {
       <input placeholder="Repeat Password" name="password_repeat" type="password" required>
     </div>
 
+    <div class="inputbox">
+      <label>Edit type:</label>
+      <select name="editType">
+        <option selected  value="Teams">Teams</option>
+        <option value="Matches">Matches</option>
+      </select>
+    </div>
+
     
     <div class="inputbox">
       <input type="submit" value="Submit">

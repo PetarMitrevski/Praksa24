@@ -7,9 +7,6 @@ require_once 'PHP_data/config.php';
 $sql = "SELECT UserName FROM users";
 $results = $conn->query($sql)->fetch_all();
 
-$parsed_url = parse_url($_SERVER['REQUEST_URI']);
-
-
 
 
 if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
@@ -34,6 +31,7 @@ if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
 
 
 require_once 'views/navigation_admin.php';
+
 ?>
 
   
@@ -50,14 +48,19 @@ require_once 'views/navigation_admin.php';
        
         <?php
            
+         if($_SESSION['editType'] === 'Teams')
          include "PHP_data/teams.php";
+
+         else 
+         include "PHP_data/teams_guestmode.php";
           
         ?>
         </table>
 
 <table id="table_home" class="clubs__table-home">
           <?php
-           
+         
+         
          include "PHP_data/homeStats.php";
             
           ?>
@@ -76,7 +79,12 @@ require_once 'views/navigation_admin.php';
      <table class="clubs__table-matches">
      
      <?php
+        
+        if($_SESSION['editType'] === 'Matches')
         include "PHP_data/matches.php";      
+        
+        else 
+        include "PHP_data/matches_guestmode.php";     
         ?>
      </table>
 

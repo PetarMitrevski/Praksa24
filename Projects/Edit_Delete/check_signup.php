@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
     $repeated_password = htmlspecialchars($_POST['password_repeat']);
+    $editType = $_POST['editType'];
     
     $query = "SELECT COUNT(*) AS num FROM users WHERE username = '$username';";
 
@@ -48,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
           $username = preg_replace('/\s+/','',$username);
 
-          $query = "INSERT INTO users(UserName,Pass) VALUE('$username','$hashedPassword')";
+          $query = "INSERT INTO users(UserName,Pass,editType) VALUE('$username','$hashedPassword','$editType')";
           $conn->query($query);
           header("Location: ../signup.php");
           exit;

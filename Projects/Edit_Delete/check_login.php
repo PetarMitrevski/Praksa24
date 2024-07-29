@@ -23,6 +23,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         if($result && password_verify($password, $result['Pass'])){
         $_SESSION['status'] = "Active";
         $_SESSION['User'] = $username;
+        $_SESSION['editType'] = $result['editType'];
         header("Location: ../home.php");
         exit;    
         }

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 require_once '../PHP_data/config.php';
 
@@ -59,11 +61,17 @@ $stmt2->execute();
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
-    header("Location: ../home.php");
+
+    $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match deleted','$_SESSION[User]')";
+    $conn->query($insert);
+    header("Location: ../home.php");  
     exit;
+    
 } else {
     echo "Invalid query";
 }
+
+
 
 $conn->close();
 ?>

@@ -21,11 +21,13 @@ if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
 
 }
 
+else if ($_SESSION['editType'] !== 'Teams')
+header("Location: home.php");
+
+
+
 if(file_exists('views/navigation_admin.php'))
 require_once 'views/navigation_admin.php';
-
-
-
 
 ?>
 

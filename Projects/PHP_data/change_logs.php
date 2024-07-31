@@ -10,7 +10,7 @@ ORDER BY dateChanged DESC, timeChanged DESC";
 
 $result = $conn->query($query)->fetch_all(MYSQLI_ASSOC);
 
-echo $result[1]['timeChanged'];
+echo $result;
 
 
 

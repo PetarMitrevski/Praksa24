@@ -88,6 +88,11 @@ require_once 'views/navigation_admin.php';
         ?>
      </table>
 
+
+     <?php
+        include "PHP_data/change_logs.php";
+     ?>
+
      </section>
 
        

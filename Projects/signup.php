@@ -73,6 +73,7 @@ else {
       <select name="editType">
         <option selected  value="Teams">Teams</option>
         <option value="Matches">Matches</option>
+        <option value="Both">Both</option>
       </select>
     </div>
 

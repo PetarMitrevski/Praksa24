@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once '../PHP_data/config.php';
 
 if($conn->connect_error){
@@ -43,18 +45,94 @@ else{
     WHERE teamID = '$id'  
     ";
 
+    $oldTeamQuery = "SELECT * FROM teams WHERE teamID = $id";
+
+    $oldTeam = $conn->query($oldTeamQuery)->fetch_assoc();
+
     $result = $conn->query($sql);
+    
  
     if(!$result){
         echo "Invalid query";
     }
 
     else{
-    header("Location: ../home.php");
-    exit;    
-}
-    $conn->close();
-     exit;
-    
+        
+        $change = "";
 
+        if($oldTeam['TeamName'] !== $team){
+
+            $change = "Team name changed from " .  $oldTeam['TeamName'] . " to $team";
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+    }    
+
+
+        if($oldTeam['HomeWins'] !== $homeWins){
+        
+            $change = "Home Wins changed from " .  $oldTeam['HomeWins'] . " to $homeWins";
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+        }
+       
+    
+        if($oldTeam['AwayWins'] !== $awayWins){
+    
+            $change = "Away Wins changed from " .  $oldTeam['AwayWins'] . " to $awayWins"; 
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+        
+    }
+
+
+        if($oldTeam['HomeDraws'] !== $homeDraws){
+        
+            $change = "Home Draws changed from " .  $oldTeam['HomeDraws'] . " to $homeDraws";
+        
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+        }
+        
+
+        if($oldTeam['AwayDraws'] !== $awayDraws){
+        
+            $change = "Away Draws changed from " .  $oldTeam['AwayDraws'] . " to $awayDraws";
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+        }
+       
+
+        if($oldTeam['HomeLosses'] !== $homeLosses){
+
+            $change = "Home Losses changed from " .  $oldTeam['HomeLosses'] " to $homeLosses";
+        
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+
+        }
+       
+
+        if($oldTeam['AwayLosses'] !== $awayLosses){
+
+            $change = "Away Losses changed from " .  $oldTeam['Away Losses'] " to $homeLosses";
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+        }
+        
+
+        $conn->close();
+        header("Location: ../home.php");
+        exit;    
+}
+    
 }

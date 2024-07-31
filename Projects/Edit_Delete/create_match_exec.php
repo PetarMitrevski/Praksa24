@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../PHP_data/config.php';
 
@@ -81,6 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the match insertion statement
         $conn->query($statement);
+        
+        $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match created','$_SESSION[User]')";
+        $conn->query($insert);
+
         header("Location: ../home.php");
         exit;
     } else {

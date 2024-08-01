@@ -62,7 +62,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
 
-    $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match deleted in week $week','$_SESSION[User]')";
+    $insert = "INSERT INTO changes(changeText,UserName,changeType) VALUE('Match deleted in week $week','$_SESSION[User]', 'Matches')";
     $conn->query($insert);
     header("Location: ../home.php");  
     exit;

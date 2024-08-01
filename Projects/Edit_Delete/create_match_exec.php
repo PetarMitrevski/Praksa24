@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $conn->query($statement);
         
-        $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match created in week $week','$_SESSION[User]')";
+        $insert = "INSERT INTO changes(changeText,UserName,changeType) VALUE('Match created in week $week','$_SESSION[User]', 'Matches')";
         $conn->query($insert);
 
         header("Location: ../home.php");

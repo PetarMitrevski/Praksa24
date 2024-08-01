@@ -2,12 +2,16 @@
 
 require_once 'config.php';
 
-if($_SESSION['editType'] === "Teams" || $_SESSION['editType'] === "Matches")
+if($_SESSION['editType'] === "Teams" || $_SESSION['editType'] === "Matches"){
+
+$changeType = $_SESSION['editType'];
+
 $query = "SELECT * FROM changes 
 JOIN users ON changes.UserName = users.UserName
-WHERE users.editType = '$_SESSION[editType]' 
+WHERE changes.changeType = '$changeType' 
 ORDER BY dateChanged DESC, timeChanged DESC";
 
+}
 else 
 $query = "SELECT * FROM changes 
 JOIN users ON changes.UserName = users.UserName

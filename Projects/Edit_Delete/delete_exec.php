@@ -17,7 +17,7 @@ $team = $conn->query($sql2)->fetch_assoc()['TeamName'];
 
 if($conn->query($sql)){
     
-    $insert = "INSERT INTO changes(changeText,UserName) VALUE('The team $team was deleted','$_SESSION[User]')";
+    $insert = "INSERT INTO changes(changeText,UserName,changeType) VALUE('The team $team was deleted','$_SESSION[User]', 'Teams')";
     $conn->query($insert);
 
     header("Location: ../home.php");

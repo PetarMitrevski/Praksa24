@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
    if ($conn->query($sql)) {
    
-   $insert = "INSERT INTO changes(changeText,UserName) VALUE('A team named $team was created','$_SESSION[User]')";
+   $insert = "INSERT INTO changes(changeText,UserName,changeType) VALUE('A team named $team was created','$_SESSION[User]', 'Teams')";
    $conn->query($insert);
 
    header("Location: ../home.php");

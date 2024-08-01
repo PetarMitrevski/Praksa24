@@ -8,10 +8,9 @@ if($conn->connect_error){
 
 $id = $_GET["id"];
 
-$sql = "
-DELETE FROM teams WHERE teamID = '$id';";
-
+$sql = "DELETE FROM teams WHERE teamID = '$id';";
 $sql2 = "SELECT * FROM teams WHERE teamID = $id";
+
 
 $team = $conn->query($sql2)->fetch_assoc()['TeamName'];
 

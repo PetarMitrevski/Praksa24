@@ -58,21 +58,14 @@ else{
 
     else{
         
+
+
         $change = "";
 
-        if($oldTeam['TeamName'] !== $team){
-
-            $change = "Team name changed from " .  $oldTeam['TeamName'] . " to $team";
-
-            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
-            $conn->query($insert);
-
-    }    
-
-
+        
         if($oldTeam['HomeWins'] !== $homeWins){
         
-            $change = "Home Wins changed from " .  $oldTeam['HomeWins'] . " to $homeWins";
+            $change = $oldTeam["TeamName"] . " home wins changed from " .  $oldTeam['HomeWins'] . " to $homeWins ";
 
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
@@ -82,7 +75,7 @@ else{
     
         if($oldTeam['AwayWins'] !== $awayWins){
     
-            $change = "Away Wins changed from " .  $oldTeam['AwayWins'] . " to $awayWins"; 
+            $change =  $oldTeam["TeamName"] . " away wins changed from " .  $oldTeam['AwayWins'] . " to $awayWins"; 
 
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
@@ -92,7 +85,7 @@ else{
 
         if($oldTeam['HomeDraws'] !== $homeDraws){
         
-            $change = "Home Draws changed from " .  $oldTeam['HomeDraws'] . " to $homeDraws";
+            $change = $oldTeam["TeamName"] . " home draws changed from " .  $oldTeam['HomeDraws'] . " to $homeDraws";
         
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
@@ -102,7 +95,7 @@ else{
 
         if($oldTeam['AwayDraws'] !== $awayDraws){
         
-            $change = "Away Draws changed from " .  $oldTeam['AwayDraws'] . " to $awayDraws";
+            $change = $oldTeam["TeamName"] . " away draws changed from " .  $oldTeam['AwayDraws'] . " to $awayDraws";
 
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
@@ -112,7 +105,7 @@ else{
 
         if($oldTeam['HomeLosses'] !== $homeLosses){
 
-            $change = "Home Losses changed from " .  $oldTeam['HomeLosses'] " to $homeLosses";
+            $change = $oldTeam["TeamName"] . " home losses changed from " .  $oldTeam['HomeLosses'] " to $homeLosses";
         
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
@@ -123,11 +116,21 @@ else{
 
         if($oldTeam['AwayLosses'] !== $awayLosses){
 
-            $change = "Away Losses changed from " .  $oldTeam['Away Losses'] " to $homeLosses";
+            $change = $oldTeam["TeamName"] . " away losses changed from " .  $oldTeam['Away Losses'] " to $homeLosses";
 
             $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
             $conn->query($insert);
         }
+
+
+        if($oldTeam['TeamName'] !== $team){
+
+            $change = "Team name changed from " .  $oldTeam['TeamName'] . " to $team";
+
+            $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change', '$_SESSION[User]')";
+            $conn->query($insert);
+
+    }    
         
 
         $conn->close();

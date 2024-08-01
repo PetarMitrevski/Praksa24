@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if((int)$oldMatch['HomeScore'] !== (int)$homeScore_new){
             
-        $change = "Home Score changed from " . $oldMatch['HomeScore'] . " to $homeScore_new";
+        $change = "Home Score changed from " . $oldMatch['HomeScore'] . " to $homeScore_new" . " in week " . $oldMatch['week'];
         
         $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change' ,'$_SESSION[User]')";
         $conn->query($insert);
@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if((int)$oldMatch['AwayScore'] !== (int)$awayScore_new){
     
-        $change =  "Away Score changed from " . $oldMatch['AwayScore'] . " to $awayScore_new";
+        $change =  "Away Score changed from " . $oldMatch['AwayScore'] . " to $awayScore_new" . " in week " . $oldMatch['week'];
             
         $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change' ,'$_SESSION[User]')";
         $conn->query($insert);
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if($oldMatch['matchDate'] !== $matchDate){
     
-        $change =  "Match Date changed from " . $oldMatch['matchDate'] . " to $matchDate";
+        $change =  "Match Date changed from " . $oldMatch['matchDate'] . " to $matchDate" . " in week " . $oldMatch['week'];
             
         $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change' ,'$_SESSION[User]')";
         $conn->query($insert);
@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if($oldMatch['matchTime'] !== $matchTime){
     
-        $change =  "Match Time changed from " . $oldMatch['matchTime'] . " to $matchTime";
+        $change =  "Match Time changed from " . $oldMatch['matchTime'] . " to $matchTime" . " in week " . $oldMatch['week'];
             
         $insert = "INSERT INTO changes(changeText,UserName) VALUE('$change' ,'$_SESSION[User]')";
         $conn->query($insert);

@@ -34,7 +34,7 @@ $away_score = $teams['AwayScore'];
 
 $home_team = $teams['team_home_id'];
 $away_team = $teams['team_away_id'];
-
+$week = $teams['week'];
 
 $query = "";
 $query2 = "";
@@ -62,7 +62,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
 
-    $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match deleted','$_SESSION[User]')";
+    $insert = "INSERT INTO changes(changeText,UserName) VALUE('Match deleted in week $week','$_SESSION[User]')";
     $conn->query($insert);
     header("Location: ../home.php");  
     exit;

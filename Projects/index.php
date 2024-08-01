@@ -59,9 +59,8 @@ else {
     </div>
 
     <div>
-      <p>Don't have an account you can choose to:</p>
-      <span><a href="home_guest.php">Guest mode</a></span>
-      <span><a href="signup.php">Sign up</a></span>     
+      <p>Don't have an account you can choose:</p>
+      <span><a href="home_guest.php">Guest mode</a></span>    
     </div>
 
   </form>

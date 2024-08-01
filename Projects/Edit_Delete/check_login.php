@@ -22,6 +22,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         
         if($result && password_verify($password, $result['Pass'])){
+        
+        session_regenerate_id(true);
         $_SESSION['status'] = "Active";
         $_SESSION['User'] = $username;
         $_SESSION['editType'] = $result['editType'];

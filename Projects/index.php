@@ -1,3 +1,10 @@
+<?php
+
+if(isset($_COOKIE["PHPSESSID"]))
+header("Location: home.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +41,7 @@ else {
 
 }
 
+
 ?>
 
 <div class="center">
@@ -50,10 +58,6 @@ else {
       <input placeholder="Password" name="password" type="password" required>
     </div>
 
-    
-
-    
-    
     <div class="inputbox">
       <input type="submit" value="Submit">
     </div>

@@ -3,6 +3,7 @@
 session_start();
 
 require_once 'PHP_data/config.php';
+require_once 'PHP_data/functions.php';
 
 $sql = "SELECT UserName FROM users";
 $results = $conn->query($sql)->fetch_all();
@@ -13,20 +14,12 @@ if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
      
      header("Location: index.php");
 
-     if (ini_get("session.use_cookies")) {
-          $params = session_get_cookie_params();
-          setcookie(session_name(), '', time() - 42000,
-              $params["path"], $params["domain"],
-              $params["secure"], $params["httponly"]
-          );
-      }
-      
-      session_destroy();
-      session_unset();
+     destroySession();
 
       exit;    
 
 }
+
 
 
 

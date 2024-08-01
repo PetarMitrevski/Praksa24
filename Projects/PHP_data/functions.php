@@ -16,22 +16,5 @@ function destroySession(){
 }
 
 
-function checkLogin($status, $user){
-
-    $urlPath = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-    if (!isset($status) && !isset($user)){
-     
-        header("Location: index.php");
-     
-        destroySession();
-     
-         exit;    
-     
-     }
-
-    
-    else if ($_SESSION['editType'] === 'Matches' && )
-}
 
 

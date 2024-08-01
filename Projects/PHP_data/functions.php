@@ -18,7 +18,9 @@ function destroySession(){
 
 function checkLogin($status, $user){
 
-    if(!isset($status) && !isset($user)){
+    $urlPath = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+    if (!isset($status) && !isset($user)){
      
         header("Location: index.php");
      
@@ -27,6 +29,9 @@ function checkLogin($status, $user){
          exit;    
      
      }
+
+    
+    else if ($_SESSION['editType'] === 'Matches' && )
 }
 
 

@@ -14,7 +14,7 @@ if(!isset($_SESSION['status']) && !isset($_SESSION['User'])){
 
 }
 
-else if ($_SESSION['editType'] !== 'Teams')
+else if ($_SESSION['editType'] === 'Matches')
 header("Location: home.php");
 
 

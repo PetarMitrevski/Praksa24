@@ -48,7 +48,7 @@ require_once 'views/navigation_admin.php';
        
         <?php
            
-         if($_SESSION['editType'] === 'Teams')
+         if($_SESSION['editType'] === 'Teams' || $_SESSION['editType'] === 'Both')
          include "PHP_data/teams.php";
 
          else 
@@ -80,7 +80,7 @@ require_once 'views/navigation_admin.php';
      
      <?php
         
-        if($_SESSION['editType'] === 'Matches')
+        if($_SESSION['editType'] === 'Matches' || $_SESSION['editType'] === 'Both')
         include "PHP_data/matches.php";      
         
         else 

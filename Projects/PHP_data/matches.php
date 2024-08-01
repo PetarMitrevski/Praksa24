@@ -9,8 +9,6 @@ $maxWeek = $conn->query($queryMaxWeek)->fetch_assoc()['maxWeek'];
 $week = 1;
 
 
-  
-  
   echo "
 
  <tr>

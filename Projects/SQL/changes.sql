@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2024 at 04:00 PM
+-- Generation Time: Aug 01, 2024 at 03:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,16 +32,19 @@ CREATE TABLE `changes` (
   `dateChanged` date DEFAULT curdate(),
   `timeChanged` time DEFAULT curtime(),
   `UserName` varchar(40) DEFAULT NULL,
-  `changeText` varchar(350) DEFAULT NULL
+  `changeText` varchar(350) DEFAULT NULL,
+  `changeType` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `changes`
 --
 
-INSERT INTO `changes` (`changeID`, `dateChanged`, `timeChanged`, `UserName`, `changeText`) VALUES
-(66, '2024-07-31', '15:07:44', 'Donny', 'Match created'),
-(67, '2024-07-31', '15:08:49', 'Donny', 'Home Score changed from 1 to 2');
+INSERT INTO `changes` (`changeID`, `dateChanged`, `timeChanged`, `UserName`, `changeText`, `changeType`) VALUES
+(78, '2024-08-01', '15:44:56', 'Donny', 'Home Score changed from 4 to 5 in week 1', 'Matches'),
+(79, '2024-08-01', '15:45:28', 'Shadow', 'Home Score changed from 5 to 6 in week 1', 'Matches'),
+(80, '2024-08-01', '15:48:14', 'Johnny', 'Oxed home wins changed from 1 to 2 ', 'Teams'),
+(81, '2024-08-01', '15:49:03', 'Shadow', 'Oxed home wins changed from 2 to 4 ', 'Teams');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +65,7 @@ ALTER TABLE `changes`
 -- AUTO_INCREMENT for table `changes`
 --
 ALTER TABLE `changes`
-  MODIFY `changeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `changeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- Constraints for dumped tables

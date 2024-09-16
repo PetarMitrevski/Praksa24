@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2024 at 01:10 PM
+-- Generation Time: Sep 16, 2024 at 09:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -55,8 +55,8 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`, `MatchesPlayed`, `Goals`, `HomePoints`, `AwayPoints`, `HomeWins`, `AwayWins`, `HomeDraws`, `AwayDraws`, `HomeLosses`, `AwayLosses`, `HomeGoals`, `AwayGoals`, `MatchesPlayedHome`, `MatchesPlayedAway`) VALUES
-(1, 'Arsenal', 4, 1, 1, 0, 2, 3, 3, 1, 1, 0, 0, 1, 0, 0, 2, 1, 1, 1),
-(5, 'Chelsea', 1, 0, 1, 1, 2, 2, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1),
+(1, 'Arsenal', 3, 1, 0, 0, 1, 6, 3, 0, 1, 0, 0, 0, 0, 0, 6, 0, 1, 0),
+(5, 'Chelsea', 0, 0, 0, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 1, 0, 5, 0, 1),
 (6, 'Newcastle', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (7, 'Aston Villa', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (8, 'Bournemouth', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -73,9 +73,7 @@ INSERT INTO `teams` (`teamID`, `TeamName`, `Points`, `Wins`, `Draws`, `Losses`, 
 (19, 'Ipswich Town', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (24, 'Manchester United', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (27, 'Liverpool', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, 'Sheffield', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(37, 'Manchester City', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(44, 'Stanford', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(46, 'Oxed', 17, 5, 2, 2, 0, 0, 13, 4, 4, 1, 1, 1, 1, 1, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -96,7 +94,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `teamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2024 at 02:55 PM
+-- Generation Time: Sep 16, 2024 at 09:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,15 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `userID` int(11) NOT NULL,
   `UserName` varchar(35) NOT NULL,
-  `Pass` varchar(190) DEFAULT NULL
+  `Pass` varchar(190) DEFAULT NULL,
+  `editType` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `UserName`, `Pass`) VALUES
-(6, 'Peter', '$2y$10$z7J9VTtgH1.eUPuhORIl1OLdZgSyQNvLFNv/iG1rNPj8jd9YMIDxy');
+INSERT INTO `users` (`userID`, `UserName`, `Pass`, `editType`) VALUES
+(16, 'Donny', '$2y$10$d5I.NG4KlvWxQkqQei5mY.tPniMvltpn40NhcGqytGd56mGZQwie.', 'Matches'),
+(17, 'Johnny', '$2y$10$RP1OzqQ73SKGVhexvy5o/OH4KCv.qB5pJu2Dga3pDD0ZJdBASm4BO', 'Teams'),
+(18, 'Shadow', '$2y$10$Q2fXdtpyDs6f47dZHpI57eAKHozwWrvu2MI3qQtdM913Hs4kJTEUC', 'Both');
 
 --
 -- Indexes for dumped tables
@@ -59,7 +62,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

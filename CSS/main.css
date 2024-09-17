@@ -1,0 +1,127 @@
+@import url("navigation.css");
+@import url("stats.css");
+@import url("contact.css");
+@import url("about.css");
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+
+
+
+input, select, textarea{
+    border: solid 0.7px black;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 3rem;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    footer {
+        background-color: #2e093d;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        top: 17rem;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 3rem;
+        padding-top: 1rem;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .clubs{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+
+    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-away th ,.clubs__table-scorers th, .clubs__table-matches th{
+        padding: 0.3rem;
+        color: #2e093d;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .clubs__table-overall td, .clubs__table-home td, .clubs__table-away td, .clubs__table-scorers td, .clubs__table-matches td{
+        font-size: 1rem;
+    }
+
+    .clubs__table-overall img, .clubs__table-home img, .clubs__table-away img, .clubs__table-scorers img{
+        width: 0.4rem;
+    }
+
+    .navigation ul{
+        list-style-type: none;
+        font-size: 1.2rem;
+        gap: 1rem;
+        font-weight: 600;
+        justify-content: end;
+    }
+
+    .clubs .btn-group button{
+        font-size: 1rem;
+    }
+
+
+    input, select, label, textarea{
+        font-size: 1.3rem;
+    }
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    
+
+    .clubs{
+        flex-direction: column;
+    }
+    
+
+    .clubs__table-overall th, .clubs__table-home th, .clubs__table-away th, .clubs__table-scorers th, .clubs__table-matches th{
+        padding: 0.2rem;
+        color: #2e093d;
+        text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    .clubs__table-overall td, .clubs__table-away td, .clubs__table-home td , .clubs__table-scorers td, .clubs__table-matches td{
+        font-size: 0.8rem;
+    }
+
+    .clubs .btn-group button{
+        font-size: 0.7rem;
+    }
+
+
+    .navigation ul{
+        list-style-type: none;
+        font-size: 0.72rem;
+        gap: 1rem;
+        font-weight: 500;
+    }
+
+    footer{
+        font-size: 1rem;
+    }
+
+
+    input, select, label, textarea{
+        font-size: 0.9rem;
+    }
+
+
+}

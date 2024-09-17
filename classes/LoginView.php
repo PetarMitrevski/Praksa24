@@ -33,4 +33,6 @@ class LoginView extends LoginModal{
 </div>
         ';
     }
+
+
 }

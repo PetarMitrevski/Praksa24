@@ -24,8 +24,9 @@ class LoginContr extends LoginModal{
             echo "User doesnt exits";
         }
 
-        else 
-        echo "user found";
+        else {
+           // if($this->getUser($this->username, $this->username)['editType'])
+        }
     }
 
 }

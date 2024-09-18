@@ -1,6 +1,7 @@
 <?php 
 
 require_once "LoginModal.php";
+require_once "LoginContr.php";
 
 class LoginView extends LoginModal{
 
@@ -9,15 +10,15 @@ class LoginView extends LoginModal{
         <div class="center">
   <h1>Log in</h1>
   <form action="configs/formdata.php" method="post">
-    
-  <p class="error"><?= $error ?></p>
+
+  <p class="error">' . LoginContr::getError() . '</p>
 
   <div class="inputbox">
-      <input placeholder="Username" name="username" type="text" required>
+      <input placeholder="Username" name="username" type="text">
     </div>
 
     <div class="inputbox">
-      <input placeholder="Password" name="password" type="password" required>
+      <input placeholder="Password" name="password" type="password">
     </div>
 
     <div class="inputbox">

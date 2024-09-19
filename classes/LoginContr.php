@@ -67,7 +67,7 @@ class LoginContr extends LoginModal{
         }
 
         else {
-           header("Location: ../routes/home.php");
+           header("Location: ../pages/homepage.php");
         }
     }
 

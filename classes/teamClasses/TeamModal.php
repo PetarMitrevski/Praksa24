@@ -2,6 +2,22 @@
 require_once __DIR__ . '/../Database.php';
 
 class TeamModal extends Database{
+    protected function getTeam($id) {
+        $sql = "SELECT * FROM teams WHERE teamID = ?";
+        
+        $conn = $this->connect();
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+
+        $stmt->execute();
+        $team = $stmt->get_result()->fetch_assoc();
+        $conn->close();
+        $stmt->close();
+
+        return $team;
+
+    }
+    
     protected function getTeams() {
         $sql = "SELECT * FROM teams ORDER BY Points DESC";
 
@@ -17,12 +33,10 @@ class TeamModal extends Database{
         $conn = $this->connect();
 
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("siiiiii", $teamName, $homeWins, $awayWins, $homeDraws, $awayDraws, $homeLosses, $awayLosses);
-        $conn->close();
-        return $stmt->execute;
+        $stmt->bind_param("siiiiii", $teamName, $homeWins, $awayWins, $homeDraws, $awayDraws, $homeLosses, $awayLosses);
+        return $stmt->execute();
 
     }
-
     
 
 }

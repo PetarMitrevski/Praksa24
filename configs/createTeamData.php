@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
     $insert = new TeamContr;
 
     $insert->addTeam($teamName, $homeWins, $awayWins, $homeDraws, $awayDraws, $homeLosses, $awayLosses);
-
+    unset($insert);
 
 
     

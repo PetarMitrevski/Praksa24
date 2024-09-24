@@ -9,7 +9,9 @@
 }
 
 
-
+.error {
+    color:red;
+ }
 
 input, select, textarea{
     border: solid 0.7px black;
@@ -123,5 +125,5 @@ body{
         font-size: 0.9rem;
     }
 
-
+ 
 }

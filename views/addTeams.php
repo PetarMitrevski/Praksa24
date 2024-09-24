@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +71,6 @@
 
 <form action="../configs/createTeamData.php"  method="post">
             <fieldset>
-           
              <div>
              <label>Team:</label>
              <input name="Team" pattern="[A-Za-z\s]+" type="text"/>

@@ -8,7 +8,7 @@ class LoginView extends LoginModal{
     public function showLogin() {
         echo '
         <div class="center">
-  <h1>Log in</h1>
+  <h1>Log in</h1> 
   <form action="configs/formdata.php" method="post">
 
   <p class="error">' . LoginContr::getError() . '</p>

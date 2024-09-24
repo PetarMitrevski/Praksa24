@@ -43,7 +43,7 @@
               </a>
             </li>
              
-
+            
             <li>
                <a href="teamAdd.php">
                 Add team
@@ -51,7 +51,7 @@
             </li>
 
             <li>
-              <a href="create_match.php">
+              <a href="matchAdd.php">
                Add match
               </a>
            </li>
@@ -236,16 +236,6 @@ $team[AwayGoals]
 
 </table>
 
-
-
 </section>
 
 
-<footer>
-    <p>&copy; 2024 Example Company.<br> All rights reserved.</p>
-</footer>
-
-<script src="../JS/tables.js"></script>
-
-</body>
-</html>

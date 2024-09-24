@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../Database.php';
 
 class TeamModal extends Database{
-    protected function getTeam($id) {
+    public function getTeam($id) {
         $sql = "SELECT * FROM teams WHERE teamID = ?";
         
         $conn = $this->connect();
@@ -18,7 +18,7 @@ class TeamModal extends Database{
 
     }
     
-    protected function getTeams() {
+    public function getTeams() {
         $sql = "SELECT * FROM teams ORDER BY Points DESC";
 
         $conn = $this->connect();

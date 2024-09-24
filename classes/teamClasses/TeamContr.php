@@ -4,7 +4,7 @@ require_once "TeamModal.php";
 class TeamContr extends TeamModal{
 
     private function teamExists($teamName) {
-        $query = "SELECT COUNT(*) as Team_number FROM teams WHERE TeamName = ?";
+        $query = "SELECT COUNT(*) as Team_number FROM teams WHERE TeamName = ? LIMIT 1";
 
         $conn = $this->connect();
         $stmt = $conn->prepare($query);
@@ -16,16 +16,27 @@ class TeamContr extends TeamModal{
 
     }
 
+    private function getError($error) {
+        switch ($error) {
+            case 'team_exists':
+                return "Team already exists";
+    
+            default:
+                return;
+        }
+    }
+
     public function listTeams() {
 
         $teams = $this->getTeams();
         
-        require_once "../views/home.php";
+        require_once "../views/teamsTable.php";
     }
 
     public function addTeam($teamName, $homeWins, $awayWins, $homeDraws, $awayDraws, $homeLosses, $awayLosses) {
-        if($this->teamExists($teamName)) 
-        header("Location: ../pages/homepage.php");
+        if($this->teamExists($teamName)){
+            header("Location: ../pages/teamAdd.php");
+        }
 
         else {
         $this->insertTeam($teamName, $homeWins, $awayWins, $homeDraws, $awayDraws, $homeLosses, $awayLosses);

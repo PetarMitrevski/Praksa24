@@ -5,3 +5,4 @@ $id = htmlspecialchars($_GET["id"]);
 
 $view = new TeamContr;
 $view->editTeamForm($id);
+unset($view);
